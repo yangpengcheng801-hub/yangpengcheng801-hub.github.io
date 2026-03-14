@@ -1,0 +1,526 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>我的技术博客 | 我的技术博客</title><meta name="author" content="汪洋大海"><meta name="copyright" content="汪洋大海"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="Markdown博客排版格式教程（可直接复制发布）  title: Markdown博客排版格式教程（可直接复制发布）date: 2026-03-14 16:00:00tags:  - Markdown语法  - 博客排版  - 新手教程categories: 博客技巧本文整理了适配博客发布的Markdown基础语法+排版技巧，所有操作均为英文输入法，语法简单可直接复制，兼顾美观度和阅读体验，新手">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的技术博客">
+<meta property="og:url" content="https://yangpengcheng801-hub.github.io/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/index.html">
+<meta property="og:site_name" content="我的技术博客">
+<meta property="og:description" content="Markdown博客排版格式教程（可直接复制发布）  title: Markdown博客排版格式教程（可直接复制发布）date: 2026-03-14 16:00:00tags:  - Markdown语法  - 博客排版  - 新手教程categories: 博客技巧本文整理了适配博客发布的Markdown基础语法+排版技巧，所有操作均为英文输入法，语法简单可直接复制，兼顾美观度和阅读体验，新手">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png">
+<meta property="article:published_time" content="2026-03-13T14:38:42.563Z">
+<meta property="article:modified_time" content="2026-03-14T07:04:08.318Z">
+<meta property="article:author" content="汪洋大海">
+<meta property="article:tag" content="Python, 爬虫, Web开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "url": "https://yangpengcheng801-hub.github.io/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/",
+  "image": "https://yangpengcheng801-hub.github.io/img/avatar.png",
+  "datePublished": "2026-03-13T14:38:42.563Z",
+  "dateModified": "2026-03-14T07:04:08.318Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "汪洋大海",
+      "url": "https://yangpengcheng801-hub.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangpengcheng801-hub.github.io/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f172a')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '我的技术博客',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (false) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">我的技术博客</span></a><a class="nav-page-title" href="/"><span class="site-name">我的技术博客</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">无标题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-03-13T14:38:42.563Z" title="发表于 2026-03-13 22:38:42">2026-03-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-03-14T07:04:08.318Z" title="更新于 2026-03-14 15:04:08">2026-03-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>Markdown博客排版格式教程（可直接复制发布）</p>
+<hr>
+<h2 id="title-Markdown博客排版格式教程（可直接复制发布）date-2026-03-14-16-00-00tags-Markdown语法-博客排版-新手教程categories-博客技巧"><a href="#title-Markdown博客排版格式教程（可直接复制发布）date-2026-03-14-16-00-00tags-Markdown语法-博客排版-新手教程categories-博客技巧" class="headerlink" title="title: Markdown博客排版格式教程（可直接复制发布）date: 2026-03-14 16:00:00tags:  - Markdown语法  - 博客排版  - 新手教程categories: 博客技巧"></a>title: Markdown博客排版格式教程（可直接复制发布）<br>date: 2026-03-14 16:00:00<br>tags:<br>  - Markdown语法<br>  - 博客排版<br>  - 新手教程<br>categories: 博客技巧</h2><p>本文整理了适配博客发布的Markdown基础语法+排版技巧，所有操作均为英文输入法，语法简单可直接复制，兼顾美观度和阅读体验，新手也能快速上手。</p>
+<p>一、博客核心排版原则（必看）</p>
+<ol>
+<li>层级清晰：标题从一级到三级即可（四级及以下太小，影响阅读）；</li>
+<li>留白适度：段落之间空一行，代码、图片前后空一行，避免拥挤；</li>
+<li>重点突出：关键内容用加粗，代码用代码块，避免大段纯文本；</li>
+<li>资源适配：图片、视频用绝对路径（如&#x2F;img&#x2F;xxx.jpg），避免博客发布后404。</li>
+</ol>
+<p>二、博客常用Markdown语法（直接复制可用）</p>
+<ol>
+<li>标题排版（博客核心层级）</li>
+</ol>
+<p>博客标题建议只用到三级，层级对应关系如下（直接复制修改内容即可）：</p>
+<h1 id="文章主标题（1个即可，放在文章最顶部）"><a href="#文章主标题（1个即可，放在文章最顶部）" class="headerlink" title="文章主标题（1个即可，放在文章最顶部）"></a>文章主标题（1个即可，放在文章最顶部）</h1><h2 id="一级小节标题（文章大分类，如“一、核心语法”）"><a href="#一级小节标题（文章大分类，如“一、核心语法”）" class="headerlink" title="一级小节标题（文章大分类，如“一、核心语法”）"></a>一级小节标题（文章大分类，如“一、核心语法”）</h2><h3 id="二级小节标题（小节下细分，如“1-1-无序列表”）"><a href="#二级小节标题（小节下细分，如“1-1-无序列表”）" class="headerlink" title="二级小节标题（小节下细分，如“1.1 无序列表”）"></a>二级小节标题（小节下细分，如“1.1 无序列表”）</h3><p>在博客排版中，不建议用四级及以下标题，字体过小会影响移动端阅读；同时需要注意：井号后必须加空格，否则无法识别为标题。</p>
+<ol start="2">
+<li>文本样式（突出重点，提升阅读体验）</li>
+</ol>
+<p>博客中常用3种文本样式，避免过多样式堆砌，保持简洁：</p>
+<p><strong>加粗文本</strong> → 用于重点句子、关键词（最常用）<br><em>斜体文本</em> → 用于轻度强调（如补充说明）<br><del>删除线文本</del> → 用于废弃内容（偶尔用）</p>
+<p>效果预览：<br><strong>这是博客重点内容</strong><br><em>这是补充说明内容</em><br><del>这是废弃内容</del></p>
+<ol start="3">
+<li>列表排版（分点清晰，适合教程、总结）</li>
+</ol>
+<p>博客中分点内容优先用列表，避免大段文字堆砌，支持嵌套（最多嵌套1层，避免杂乱）：</p>
+<p>3.1 无序列表（常用，适合无顺序的分点）</p>
+<ul>
+<li>分点内容1（减号+空格，推荐使用）</li>
+<li>分点内容2<ul>
+<li>嵌套分点2.1（Tab缩进1次，仅嵌套1层）</li>
+</ul>
+</li>
+<li>分点内容3</li>
+</ul>
+<p>3.2 有序列表（适合有顺序的步骤，如教程）</p>
+<ol>
+<li>步骤1（数字+点+空格）</li>
+<li>步骤2<ol>
+<li>子步骤2.1（Tab缩进，仅嵌套1层）</li>
+</ol>
+</li>
+<li>步骤3</li>
+</ol>
+<p>3.3 任务列表（适合待办、清单类内容）</p>
+<ul>
+<li><input disabled="" type="checkbox"> 未完成任务（方括号内空格）</li>
+<li><input checked="" disabled="" type="checkbox"> 已完成任务（方括号内小写x）</li>
+</ul>
+<ol start="4">
+<li>段落与引用（提升文章质感）</li>
+</ol>
+<p>4.1 段落排版（核心！避免拥挤）</p>
+<p>这是第一段内容，每段控制在3-5行，避免大段文字（提升移动端阅读体验）。</p>
+<p>这是第二段内容，段落之间必须空一行，否则会合并为一段。</p>
+<p>强制换行：一行末尾加2个空格，再按回车<br>（用于同一段内需要换行的场景，如诗句、短句）</p>
+<p>4.2 引用排版（适合名人名言、引用内容）</p>
+<blockquote>
+<p>引用内容（大于号+空格，单独一行）<br>多行长引用，每一行都加大于号</p>
+<blockquote>
+<p>嵌套引用（最多1层，避免杂乱）</p>
+</blockquote>
+</blockquote>
+<p>效果预览：</p>
+<blockquote>
+<p>这是博客中常用的引用样式，用于突出引用内容，提升文章质感。<br>多行长引用只需每一行前加大于号即可。</p>
+</blockquote>
+<p>4.3 水平分割线（分隔小节，避免杂乱）</p>
+<p>用于分隔文章不同小节，建议每2-3个小节用1次，格式如下：</p>
+<p>—（三个减号，单独一行，前后各空一行）</p>
+<p>效果预览：</p>
+<hr>
+<ol start="5">
+<li>链接排版（博客常用，避免404）</li>
+</ol>
+<p>博客中链接分为外部链接（跳转其他网站）和内部链接（跳转自己博客文章），格式如下：</p>
+<h1 id="外部链接（最常用，如跳转百度、GitHub）"><a href="#外部链接（最常用，如跳转百度、GitHub）" class="headerlink" title="外部链接（最常用，如跳转百度、GitHub）"></a>外部链接（最常用，如跳转百度、GitHub）</h1><p><a href="%E9%93%BE%E6%8E%A5%E5%9C%B0%E5%9D%80" title="可选：鼠标悬停提示">链接显示文本</a></p>
+<h1 id="直接链接（自动识别网址，适合长链接）"><a href="#直接链接（自动识别网址，适合长链接）" class="headerlink" title="直接链接（自动识别网址，适合长链接）"></a>直接链接（自动识别网址，适合长链接）</h1><p><a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a></p>
+<h1 id="内部链接（跳转自己博客的其他文章，路径为文章相对路径）"><a href="#内部链接（跳转自己博客的其他文章，路径为文章相对路径）" class="headerlink" title="内部链接（跳转自己博客的其他文章，路径为文章相对路径）"></a>内部链接（跳转自己博客的其他文章，路径为文章相对路径）</h1><p><a href="/2026/03/13/hello-world/">我的另一篇文章</a></p>
+<h1 id="锚点链接（跳转本文内指定小节，适合长文章）"><a href="#锚点链接（跳转本文内指定小节，适合长文章）" class="headerlink" title="锚点链接（跳转本文内指定小节，适合长文章）"></a>锚点链接（跳转本文内指定小节，适合长文章）</h1><p><a href="#3-%E5%88%97%E8%A1%A8%E6%8E%92%E7%89%88">跳转至列表排版</a></p>
+<ol start="6">
+<li>图片排版（博客配图关键，避免错位）</li>
+</ol>
+<p>重点：博客图片必须用「绝对路径」，路径格式为 &#x2F;img&#x2F;图片名.jpg（图片放在博客source&#x2F;img文件夹下），否则发布后会404。</p>
+<h1 id="普通图片（居中显示，适配博客）"><a href="#普通图片（居中显示，适配博客）" class="headerlink" title="普通图片（居中显示，适配博客）"></a>普通图片（居中显示，适配博客）</h1><p><img src="/img/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="图片替代文本" title="可选：鼠标悬停提示"></p>
+<h1 id="带链接的图片（点击图片跳转，如跳转原图）"><a href="#带链接的图片（点击图片跳转，如跳转原图）" class="headerlink" title="带链接的图片（点击图片跳转，如跳转原图）"></a>带链接的图片（点击图片跳转，如跳转原图）</h1><p><a href="%E8%B7%B3%E8%BD%AC%E9%93%BE%E6%8E%A5"><img src="/img/%E5%9B%BE%E7%89%87%E5%90%8D.jpg" alt="图片替代文本"></a></p>
+<p>建议：图片前后各空一行，避免图片与文字粘连；图片替代文本尽量简洁，方便无法加载图片时显示。</p>
+<ol start="7">
+<li>代码排版（技术博客必备，语法高亮）</li>
+</ol>
+<p>技术博客常用代码块，需指定代码语言（如python、javascript），实现语法高亮，提升可读性：</p>
+<p>7.1 行内代码（用于单个变量、命令）</p>
+<p>变量 <code>myvar</code> 被赋值为 <code>100</code>，使用 <code>print()</code> 函数输出结果。</p>
+<p>效果预览：变量 <code>myvar</code> 被赋值为 <code>100</code>，使用 <code>print()</code> 函数输出结果。</p>
+<p>7.2 代码块（用于多行代码，技术博客核心）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">def calc(a):</span><br><span class="line">    return np.sqrt(a)*3</span><br><span class="line"></span><br><span class="line">test = calc(12)</span><br><span class="line">print(test)</span><br></pre></td></tr></table></figure>
+
+<p>注意：代码块前后各空一行，代码语言小写（如python、html），语法高亮效果更稳定。</p>
+<ol start="8">
+<li>表格排版（适合数据对比，简洁为主）</li>
+</ol>
+<p>博客中表格建议简洁，列数不超过3列，避免移动端显示错位：</p>
+<h1 id="简洁表格（默认左对齐，适配博客）"><a href="#简洁表格（默认左对齐，适配博客）" class="headerlink" title="简洁表格（默认左对齐，适配博客）"></a>简洁表格（默认左对齐，适配博客）</h1><table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+<th>表头3</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>内容1</td>
+<td>内容2</td>
+<td>内容3</td>
+</tr>
+<tr>
+<td>内容4</td>
+<td>内容5</td>
+<td>内容6</td>
+</tr>
+</tbody></table>
+<h1 id="带对齐方式的表格（可选）"><a href="#带对齐方式的表格（可选）" class="headerlink" title="带对齐方式的表格（可选）"></a>带对齐方式的表格（可选）</h1><table>
+<thead>
+<tr>
+<th align="left">左对齐</th>
+<th align="center">居中对齐</th>
+<th align="right">右对齐</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">内容1</td>
+<td align="center">内容2</td>
+<td align="right">内容3</td>
+</tr>
+</tbody></table>
+<p>三、博客排版避坑指南（重点！）</p>
+<ul>
+<li><p>不要用过多样式：同一篇文章，加粗、斜体、删除线不超过3种，避免杂乱；</p>
+</li>
+<li><p>不要嵌套过多层级：列表、引用最多嵌套1层，嵌套过多会导致移动端显示错乱；</p>
+</li>
+<li><p>不要用中文符号：所有Markdown符号（#、*、[]、()等）必须是英文输入法，中文符号会失效；</p>
+</li>
+<li><p>图片必须用绝对路径：路径格式 &#x2F;img&#x2F;图片名.后缀，图片放在source&#x2F;img文件夹；</p>
+</li>
+<li><p>每段控制在3-5行：适合移动端阅读，避免大段文字堆砌；</p>
+</li>
+<li><p>发布前预览：本地执行hexo s，在localhost:4000预览，确认排版无误再部署。</p>
+</li>
+</ul>
+<p>四、博客示例排版（可直接复制修改）</p>
+<h1 id="我的第一篇技术博客"><a href="#我的第一篇技术博客" class="headerlink" title="我的第一篇技术博客"></a>我的第一篇技术博客</h1><h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这是一篇Markdown格式的博客示例，排版简洁，适配移动端阅读。本文主要介绍Markdown博客排版技巧，新手可直接复制修改。</p>
+<h2 id="二、核心语法示例"><a href="#二、核心语法示例" class="headerlink" title="二、核心语法示例"></a>二、核心语法示例</h2><h3 id="2-1-文本样式"><a href="#2-1-文本样式" class="headerlink" title="2.1 文本样式"></a>2.1 文本样式</h3><p><strong>这是重点内容</strong>，<em>这是补充说明</em>，<del>这是废弃内容</del>。</p>
+<h3 id="2-2-列表示例"><a href="#2-2-列表示例" class="headerlink" title="2.2 列表示例"></a>2.2 列表示例</h3><ul>
+<li>无序列表1</li>
+<li>无序列表2<ul>
+<li>嵌套列表2.1</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>有序列表1</li>
+<li>有序列表2</li>
+</ol>
+<h3 id="2-3-代码示例"><a href="#2-3-代码示例" class="headerlink" title="2.3 代码示例"></a>2.3 代码示例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello, 我的博客！&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、总结"><a href="#三、总结" class="headerlink" title="三、总结"></a>三、总结</h2><p>本文整理了Markdown博客排版的核心技巧，重点注意图片路径和层级清晰，按照示例排版，就能写出美观的博客啦！</p>
+<hr>
+<blockquote>
+<p>提示：发布前记得本地预览，确认排版无误后再执行hexo clean、hexo g、hexo d部署。</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://yangpengcheng801-hub.github.io">汪洋大海</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://yangpengcheng801-hub.github.io/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/">https://yangpengcheng801-hub.github.io/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://yangpengcheng801-hub.github.io" target="_blank">我的技术博客</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/avatar.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/03/13/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Hello World</div></div><div class="info-2"><div class="info-item-1">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">汪洋大海</div><div class="author-info-description">Tech Blog / 技术分享</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">✨ 把握现在 · 创造未来✨</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#title-Markdown%E5%8D%9A%E5%AE%A2%E6%8E%92%E7%89%88%E6%A0%BC%E5%BC%8F%E6%95%99%E7%A8%8B%EF%BC%88%E5%8F%AF%E7%9B%B4%E6%8E%A5%E5%A4%8D%E5%88%B6%E5%8F%91%E5%B8%83%EF%BC%89date-2026-03-14-16-00-00tags-Markdown%E8%AF%AD%E6%B3%95-%E5%8D%9A%E5%AE%A2%E6%8E%92%E7%89%88-%E6%96%B0%E6%89%8B%E6%95%99%E7%A8%8Bcategories-%E5%8D%9A%E5%AE%A2%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">title: Markdown博客排版格式教程（可直接复制发布）date: 2026-03-14 16:00:00tags:  - Markdown语法  - 博客排版  - 新手教程categories: 博客技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E4%B8%BB%E6%A0%87%E9%A2%98%EF%BC%881%E4%B8%AA%E5%8D%B3%E5%8F%AF%EF%BC%8C%E6%94%BE%E5%9C%A8%E6%96%87%E7%AB%A0%E6%9C%80%E9%A1%B6%E9%83%A8%EF%BC%89"><span class="toc-number">2.</span> <span class="toc-text">文章主标题（1个即可，放在文章最顶部）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E7%BA%A7%E5%B0%8F%E8%8A%82%E6%A0%87%E9%A2%98%EF%BC%88%E6%96%87%E7%AB%A0%E5%A4%A7%E5%88%86%E7%B1%BB%EF%BC%8C%E5%A6%82%E2%80%9C%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E2%80%9D%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">一级小节标题（文章大分类，如“一、核心语法”）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E7%BA%A7%E5%B0%8F%E8%8A%82%E6%A0%87%E9%A2%98%EF%BC%88%E5%B0%8F%E8%8A%82%E4%B8%8B%E7%BB%86%E5%88%86%EF%BC%8C%E5%A6%82%E2%80%9C1-1-%E6%97%A0%E5%BA%8F%E5%88%97%E8%A1%A8%E2%80%9D%EF%BC%89"><span class="toc-number">2.1.1.</span> <span class="toc-text">二级小节标题（小节下细分，如“1.1 无序列表”）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E9%93%BE%E6%8E%A5%EF%BC%88%E6%9C%80%E5%B8%B8%E7%94%A8%EF%BC%8C%E5%A6%82%E8%B7%B3%E8%BD%AC%E7%99%BE%E5%BA%A6%E3%80%81GitHub%EF%BC%89"><span class="toc-number">3.</span> <span class="toc-text">外部链接（最常用，如跳转百度、GitHub）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E9%93%BE%E6%8E%A5%EF%BC%88%E8%87%AA%E5%8A%A8%E8%AF%86%E5%88%AB%E7%BD%91%E5%9D%80%EF%BC%8C%E9%80%82%E5%90%88%E9%95%BF%E9%93%BE%E6%8E%A5%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">直接链接（自动识别网址，适合长链接）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E9%93%BE%E6%8E%A5%EF%BC%88%E8%B7%B3%E8%BD%AC%E8%87%AA%E5%B7%B1%E5%8D%9A%E5%AE%A2%E7%9A%84%E5%85%B6%E4%BB%96%E6%96%87%E7%AB%A0%EF%BC%8C%E8%B7%AF%E5%BE%84%E4%B8%BA%E6%96%87%E7%AB%A0%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84%EF%BC%89"><span class="toc-number">5.</span> <span class="toc-text">内部链接（跳转自己博客的其他文章，路径为文章相对路径）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%94%9A%E7%82%B9%E9%93%BE%E6%8E%A5%EF%BC%88%E8%B7%B3%E8%BD%AC%E6%9C%AC%E6%96%87%E5%86%85%E6%8C%87%E5%AE%9A%E5%B0%8F%E8%8A%82%EF%BC%8C%E9%80%82%E5%90%88%E9%95%BF%E6%96%87%E7%AB%A0%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">锚点链接（跳转本文内指定小节，适合长文章）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E5%9B%BE%E7%89%87%EF%BC%88%E5%B1%85%E4%B8%AD%E6%98%BE%E7%A4%BA%EF%BC%8C%E9%80%82%E9%85%8D%E5%8D%9A%E5%AE%A2%EF%BC%89"><span class="toc-number">7.</span> <span class="toc-text">普通图片（居中显示，适配博客）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%A6%E9%93%BE%E6%8E%A5%E7%9A%84%E5%9B%BE%E7%89%87%EF%BC%88%E7%82%B9%E5%87%BB%E5%9B%BE%E7%89%87%E8%B7%B3%E8%BD%AC%EF%BC%8C%E5%A6%82%E8%B7%B3%E8%BD%AC%E5%8E%9F%E5%9B%BE%EF%BC%89"><span class="toc-number">8.</span> <span class="toc-text">带链接的图片（点击图片跳转，如跳转原图）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AE%80%E6%B4%81%E8%A1%A8%E6%A0%BC%EF%BC%88%E9%BB%98%E8%AE%A4%E5%B7%A6%E5%AF%B9%E9%BD%90%EF%BC%8C%E9%80%82%E9%85%8D%E5%8D%9A%E5%AE%A2%EF%BC%89"><span class="toc-number">9.</span> <span class="toc-text">简洁表格（默认左对齐，适配博客）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%A6%E5%AF%B9%E9%BD%90%E6%96%B9%E5%BC%8F%E7%9A%84%E8%A1%A8%E6%A0%BC%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">10.</span> <span class="toc-text">带对齐方式的表格（可选）</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%8A%80%E6%9C%AF%E5%8D%9A%E5%AE%A2"><span class="toc-number">11.</span> <span class="toc-text">我的第一篇技术博客</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-number">11.1.</span> <span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">11.2.</span> <span class="toc-text">二、核心语法示例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%96%87%E6%9C%AC%E6%A0%B7%E5%BC%8F"><span class="toc-number">11.2.1.</span> <span class="toc-text">2.1 文本样式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%88%97%E8%A1%A8%E7%A4%BA%E4%BE%8B"><span class="toc-number">11.2.2.</span> <span class="toc-text">2.2 列表示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="toc-number">11.2.3.</span> <span class="toc-text">2.3 代码示例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-number">11.3.</span> <span class="toc-text">三、总结</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/" title="无标题">无标题</a><time datetime="2026-03-13T14:38:42.563Z" title="发表于 2026-03-13 22:38:42">2026-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/13/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-12T16:08:22.841Z" title="发表于 2026-03-13 00:08:22">2026-03-13</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 汪洋大海</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"></div><script>
+  // 音频列表（可自行添加/修改）
+  const audioList = [
+    { id: 'audio1', name: '捂不化的冬雪', src: '/audio/music1.mp3' },
+    { id: 'audio2', name: '海誓山盟', src: '/audio/music2.mp3' },
+    { id: 'audio3', name: '是我不够好', src: '/audio/music3.mp3' }
+  ];
+  
+  // 初始化视频（静音自动播放）
+  document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('page-header');
+    if (header && window.location.pathname === '/' && !header.querySelector('#bg-video')) {
+      // 1. 创建视频元素（静音）
+      const video = document.createElement('video');
+      video.id = 'bg-video';
+      video.autoplay = true;
+      video.loop = true;
+      video.muted = true; // 强制静音
+      video.playsInline = true;
+      video.preload = 'auto';
+      video.innerHTML = '<source src="/img/bg-home.mp4" type="video/mp4">';
+      header.prepend(video);
+
+      // 视频加载失败兜底
+      video.addEventListener('error', function() {
+        console.error('视频加载失败！检查路径：/img/bg-home.mp4');
+        header.style.background = 'linear-gradient(135deg, #2a3852, #3b82f6)';
+      });
+
+      // 2. 创建音频播放器容器
+      const audioContainer = document.createElement('div');
+      audioContainer.className = 'audio-player';
+      audioContainer.innerHTML = `
+        <div id="audio-status">未播放</div>
+        <button class="control-btn" id="play-pause-btn">
+          <i class="fa fa-play" style="font-size:16px;"></i>
+        </button>
+      `;
+      header.appendChild(audioContainer);
+
+      // 3. 添加音频选择按钮
+      audioList.forEach(audio => {
+        const btn = document.createElement('button');
+        btn.id = audio.id + '-btn';
+        btn.textContent = audio.name;
+        btn.addEventListener('click', () => selectAudio(audio));
+        audioContainer.appendChild(btn);
+      });
+
+      // 4. 初始化音频对象
+      let currentAudio = null;
+      let isPlaying = false;
+
+      // 选择音频函数
+      function selectAudio(audio) {
+        // 停止当前播放的音频
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio = null;
+          isPlaying = false;
+          updatePlayBtn();
+          updateStatus('未播放');
+        }
+        // 取消所有按钮激活状态
+        audioList.forEach(item => {
+          document.getElementById(item.id + '-btn').classList.remove('active');
+        });
+        // 激活当前按钮
+        document.getElementById(audio.id + '-btn').classList.add('active');
+        // 创建新音频对象
+        currentAudio = new Audio(audio.src);
+        currentAudio.loop = true; // 循环播放
+        currentAudio.volume = 0.3; // 音量30%
+        updateStatus(`已选择：${audio.name}`);
+      }
+
+      // 播放/暂停切换
+      document.getElementById('play-pause-btn').addEventListener('click', function() {
+        if (!currentAudio) {
+          updateStatus('请先选择音频');
+          return;
+        }
+        if (isPlaying) {
+          currentAudio.pause();
+          isPlaying = false;
+          updatePlayBtn();
+          updateStatus(`已暂停：${audioList.find(a => a.id === currentAudio.id)?.name || '音频'}`);
+        } else {
+          currentAudio.play();
+          isPlaying = true;
+          updatePlayBtn();
+          updateStatus(`播放中：${audioList.find(a => a.id === currentAudio.id)?.name || '音频'}`);
+        }
+      });
+
+      // 更新播放按钮图标
+      function updatePlayBtn() {
+        const btn = document.getElementById('play-pause-btn');
+        btn.innerHTML = isPlaying 
+          ? '<i class="fa fa-pause" style="font-size:16px;"></i>' 
+          : '<i class="fa fa-play" style="font-size:16px;"></i>';
+      }
+
+      // 更新状态文本
+      function updateStatus(text) {
+      // 简化文字，避免换行
+      const shortText = text
+        .replace('播放中：', '▶️ ')
+        .replace('已暂停：', '⏸️ ')
+        .replace('已选择：', '🎵 ')
+        .replace('请先选择音频', '⚠️ 请选音频');
+      document.getElementById('audio-status').textContent = shortText;
+    }
+
+      // 音频加载失败处理
+      document.addEventListener('error', function(e) {
+        if (e.target.tagName === 'AUDIO') {
+          updateStatus('音频加载失败！');
+          console.error('音频加载失败：', e.target.src);
+        }
+      }, true);
+    }
+  });
+
+  // 移动端适配
+  function adaptVideoBackground() {
+    const video = document.getElementById('bg-video');
+    const audioPlayer = document.querySelector('.audio-player');
+    const header = document.getElementById('page-header');
+    if (window.innerWidth < 768) {
+      if (video) video.style.display = 'none';
+      if (audioPlayer) audioPlayer.style.display = 'none';
+      header.style.background = 'linear-gradient(135deg, #2a3852, #3b82f6)';
+    } else {
+      if (video) video.style.display = 'block';
+      if (audioPlayer) audioPlayer.style.display = 'flex';
+    }
+  }
+  window.addEventListener('resize', adaptVideoBackground);
+  adaptVideoBackground();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,196,255" opacity="0.6" zIndex="-1" count="80" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
