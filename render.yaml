@@ -1,0 +1,22 @@
+# Render 一键部署：https://render.com → New → Blueprint → 连接 GitHub 仓库
+services:
+  - type: web
+    name: cet4-app
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: '22'
+      - key: VITE_SUPABASE_URL
+        sync: false
+      - key: VITE_SUPABASE_ANON_KEY
+        sync: false
+      - key: VITE_OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: VITE_OPENAI_BASE_URL
+        value: https://dashscope.aliyuncs.com/compatible-mode/v1
