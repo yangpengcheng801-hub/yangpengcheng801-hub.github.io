@@ -1,3 +1,5 @@
+import { assetPath } from './assetPath'
+
 export function registerServiceWorker() {
   if (!('serviceWorker' in navigator)) return
   window.addEventListener('load', () => {
@@ -9,7 +11,7 @@ export function registerServiceWorker() {
     })
 
     navigator.serviceWorker
-      .register('/sw.js')
+      .register(assetPath('sw.js'))
       .then((registration) => {
         registration.addEventListener('updatefound', () => {
           const worker = registration.installing

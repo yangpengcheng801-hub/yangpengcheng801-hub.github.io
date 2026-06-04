@@ -4,6 +4,7 @@ import { pairArticleSentences } from './articleSentences'
 import { loadDictionary, lookupWord, type DictEntry } from './dictionary'
 import { lookupWordOnline } from './dictOnline'
 import { cancelAutoSpeak, speakSentence, speakWord } from './speech'
+import { assetPath } from './assetPath'
 
 type Article = {
   id: number
@@ -42,7 +43,7 @@ export default function ArticlesTab({ apiKey }: { apiKey: string }) {
   }, [])
 
   useEffect(() => {
-    void fetch('/high-frequency-words.json')
+    void fetch(assetPath('high-frequency-words.json'))
       .then((r) => (r.ok ? r.json() : []))
       .then((data) => {
         if (!Array.isArray(data)) return

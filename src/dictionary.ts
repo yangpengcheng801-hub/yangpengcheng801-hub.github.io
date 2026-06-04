@@ -1,5 +1,7 @@
 /** 内置英汉词典（由四级词库生成，见 scripts/build-dictionary.mjs） */
 
+import { assetPath } from './assetPath'
+
 export type DictEntry = {
   word: string
   meaning: string
@@ -50,7 +52,7 @@ export async function loadDictionary(): Promise<Map<string, RawDictEntry>> {
   if (loadPromise) return loadPromise
 
   loadPromise = (async () => {
-    const res = await fetch('/dictionary.json')
+    const res = await fetch(assetPath('dictionary.json'))
     if (!res.ok) throw new Error('词典加载失败')
     const raw = (await res.json()) as Record<string, RawDictEntry>
     dictMap = new Map(Object.entries(raw))

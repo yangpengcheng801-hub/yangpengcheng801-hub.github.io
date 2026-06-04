@@ -1,3 +1,5 @@
+import { assetPath } from './assetPath'
+
 export type WordLibrary = 'high-frequency' | 'all'
 
 export const LIBRARY_CHOICE_KEY = 'cet4_current_library_v1'
@@ -156,7 +158,7 @@ export function readOverview() {
 
 export async function fetchWordLibrary(library: WordLibrary) {
   const file = LIBRARY_META[library].file
-  const res = await fetch(`/${file}`)
+  const res = await fetch(assetPath(file))
   if (!res.ok) throw new Error(`load ${file} failed`)
   return res.json()
 }

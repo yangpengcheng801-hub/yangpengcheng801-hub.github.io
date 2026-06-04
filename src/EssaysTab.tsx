@@ -21,6 +21,7 @@ import {
   saveTemplateFill,
 } from './essayDrafts'
 import { cancelAutoSpeak, speakSentence } from './speech'
+import { assetPath } from './assetPath'
 
 type ParaBlock = { label: string; content: string }
 
@@ -362,7 +363,7 @@ export default function EssaysTab() {
 
   useEffect(() => {
     let cancelled = false
-    void fetch('/essay-materials.json')
+    void fetch(assetPath('essay-materials.json'))
       .then((r) => {
         if (!r.ok) throw new Error('作文素材加载失败')
         return r.json() as Promise<EssayPack>
