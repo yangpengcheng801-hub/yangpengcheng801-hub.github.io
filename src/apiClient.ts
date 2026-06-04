@@ -48,16 +48,12 @@ export function resolveChatCompletionsUrl(): string {
 export function shouldUseApiProxy(): boolean {
   if (getApiProxyBase()) return true
   if (import.meta.env.DEV && !isNativeApp()) return true
-  if (isNativeApp()) return false
-  return true
+  return false
 }
 
 /** AI / 词典接口在当前环境是否可发起请求 */
 export function isApiProxyAvailable(): boolean {
-  if (isNativeApp()) return true
-  if (import.meta.env.DEV && !isNativeApp()) return true
-  if (getApiProxyBase()) return true
-  return !isNativeApp()
+  return true
 }
 
 export function resolveApiProxyUrl(path: string): string {
