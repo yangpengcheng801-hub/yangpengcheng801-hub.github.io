@@ -3,25 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agent Framework Lab</title>
+    <meta
+      name="description"
+      content="Agent Framework Lab：AutoGen、AgentScope、CAMEL、LangGraph 风格的智能体工作流练习。"
+    />
+    <title>Agent Framework Lab | 杨鹏程</title>
     <link rel="stylesheet" href="../project-page.css" />
   </head>
   <body>
     <main class="page">
-      <nav class="crumb"><a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a></nav>
+      <nav class="crumb" aria-label="面包屑导航">
+        <a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a><span>/</span><span>Agent Framework Lab</span>
+      </nav>
+
       <section class="hero">
-        <p class="eyebrow">Agent / workflow</p>
+        <p class="eyebrow">Agent / workflow / Python</p>
         <h1>Agent Framework Lab</h1>
         <p class="lead">
-          一组智能体框架练习代码，用来理解角色、消息、状态、任务分解和图式工作流。
+          一组智能体框架练习代码，用来理解角色、消息、状态、任务分解和图式工作流。这个项目偏学习和机制拆解，不包装成完整产品。
         </p>
         <div class="actions">
           <a class="button primary" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/agent-framework-lab" target="_blank" rel="noreferrer">源码</a>
           <a class="button" href="./README.md">README</a>
+          <a class="button" href="/projects/">返回项目列表</a>
         </div>
       </section>
 
-      <section class="grid two">
+      <section class="kpis" aria-label="项目概览">
+        <div class="kpi"><strong>AutoGen</strong><span>团队协作模拟</span></div>
+        <div class="kpi"><strong>CAMEL</strong><span>角色扮演和任务分解</span></div>
+        <div class="kpi"><strong>LangGraph</strong><span>节点、边、状态</span></div>
+        <div class="kpi"><strong>No key</strong><span>基础实验可直接跑</span></div>
+      </section>
+
+      <section class="section grid two">
         <article class="panel">
           <h2>内容</h2>
           <ul>
@@ -36,8 +51,61 @@
           <pre class="code">cd projects/agent-framework-lab
 python scripts/check_env.py
 python scripts/lab0_run_all_minimal.py</pre>
+          <p class="note">基础实验会把输出写到 `outputs/`，这个目录不会提交到公开仓库。</p>
         </article>
       </section>
+
+      <section class="section grid two">
+        <article class="panel">
+          <h2>关键目录</h2>
+          <pre class="code">agent-framework-lab/
+  labs/
+    autogen_style_software_team.py
+    agentscope_style_werewolf.py
+    camel_style_book_writing.py
+    langgraph_style_dialogue_workflow.py
+  framework_templates/
+  scripts/
+  EXPERIMENT_GUIDE.md
+  SOURCE_NOTES.md</pre>
+        </article>
+        <article class="panel">
+          <h2>我主要写的部分</h2>
+          <ul>
+            <li>把几个框架的核心概念拆成不依赖外部 API 的最小实验。</li>
+            <li>整理脚本，一条命令跑完基础实验，便于复现。</li>
+            <li>保留真实框架模板，用环境变量读取配置，避免提交密钥。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section panel">
+        <h2>学习重点</h2>
+        <div class="flow">
+          <div class="step"><strong>Role</strong><span>角色设定</span></div>
+          <div class="step"><strong>Message</strong><span>消息传递</span></div>
+          <div class="step"><strong>State</strong><span>状态保存</span></div>
+          <div class="step"><strong>Graph</strong><span>流程编排</span></div>
+          <div class="step"><strong>Output</strong><span>结果落盘</span></div>
+        </div>
+      </section>
+
+      <section class="section grid two">
+        <article class="panel">
+          <h2>相关文档</h2>
+          <div class="links">
+            <a class="link" href="./EXPERIMENT_GUIDE.md">EXPERIMENT_GUIDE</a>
+            <a class="link" href="./SOURCE_NOTES.md">SOURCE_NOTES</a>
+            <a class="link" href="./requirements_minimal.txt">requirements_minimal.txt</a>
+          </div>
+        </article>
+        <article class="panel">
+          <h2>公开版本说明</h2>
+          <p>`labs/` 里的基础实验不需要 API Key。`framework_templates/` 是真实框架模板，只读取环境变量，不包含密钥。</p>
+        </article>
+      </section>
+
+      <footer class="footer">© 2026 杨鹏程</footer>
     </main>
   </body>
 </html>

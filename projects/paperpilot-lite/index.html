@@ -3,35 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PaperPilot Lite</title>
+    <meta
+      name="description"
+      content="PaperPilot Lite：轻量论文阅读助手原型，支持本地解析、摘要、证据检索和 Markdown 笔记导出。"
+    />
+    <title>PaperPilot Lite | 杨鹏程</title>
     <link rel="stylesheet" href="../project-page.css" />
   </head>
   <body>
     <main class="page">
-      <nav class="crumb"><a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a></nav>
+      <nav class="crumb" aria-label="面包屑导航">
+        <a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a><span>/</span><span>PaperPilot Lite</span>
+      </nav>
+
       <section class="hero">
         <p class="eyebrow">Local retrieval / paper reading</p>
         <h1>PaperPilot Lite</h1>
         <p class="lead">
-          一个轻量的论文阅读助手原型，主要验证本地解析、摘要、证据检索和问答流程。
+          一个轻量的论文阅读助手原型，主要验证本地解析、摘要、证据检索、问答和笔记导出流程。它更适合快速试功能，也方便继续改成完整 RAG 项目。
         </p>
         <div class="actions">
           <a class="button primary" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paperpilot-lite" target="_blank" rel="noreferrer">源码</a>
           <a class="button" href="./README.md">README</a>
+          <a class="button" href="/projects/">返回项目列表</a>
         </div>
       </section>
 
-      <section class="panel screenshot">
-        <img src="./docs/assets/paperpilot-ui.png" alt="PaperPilot Lite UI 截图" />
+      <section class="screenshot" aria-label="PaperPilot Lite 页面截图">
+        <img src="./docs/assets/paperpilot-ui.png" alt="PaperPilot Lite 界面截图" />
       </section>
 
-      <section class="grid two">
+      <section class="kpis" aria-label="项目概览">
+        <div class="kpi"><strong>PDF / TXT</strong><span>文档输入</span></div>
+        <div class="kpi"><strong>Evidence</strong><span>证据片段返回</span></div>
+        <div class="kpi"><strong>No key</strong><span>基础流程可本地跑</span></div>
+        <div class="kpi"><strong>Markdown</strong><span>阅读笔记导出</span></div>
+      </section>
+
+      <section class="section grid two">
         <article class="panel">
           <h2>功能</h2>
           <ul>
             <li>支持 PDF / TXT / Markdown。</li>
             <li>抽取摘要、关键词、方法、结果和局限。</li>
             <li>问答时返回相关证据片段。</li>
+            <li>可以导出 Markdown 阅读笔记。</li>
           </ul>
         </article>
         <article class="panel">
@@ -39,8 +55,50 @@
           <pre class="code">cd projects/paperpilot-lite
 python -m pip install -r requirements.txt
 python app.py</pre>
+          <p class="note">默认打开：`http://127.0.0.1:8765`。</p>
         </article>
       </section>
+
+      <section class="section grid two">
+        <article class="panel">
+          <h2>关键目录</h2>
+          <pre class="code">paperpilot-lite/
+  app.py
+  paper_agent/
+    core.py
+    llm.py
+    orchestrator.py
+  static/
+  tests/
+  docs/assets/
+  samples/</pre>
+        </article>
+        <article class="panel">
+          <h2>我主要写的部分</h2>
+          <ul>
+            <li>用标准库 HTTP server 做一个轻量本地 Web 入口。</li>
+            <li>整理论文解析、结构化摘要、证据片段检索和导出流程。</li>
+            <li>补示例文档、截图和测试，方便别人直接试。</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section grid two">
+        <article class="screenshot">
+          <img src="./docs/assets/paperpilot-result-panel.png" alt="PaperPilot Lite 结果面板截图" />
+        </article>
+        <article class="panel">
+          <h2>公开版本说明</h2>
+          <p>目录里保留了源码、测试、示例和截图；没有提交真实密钥和本地缓存。基础流程不依赖模型 API，配置后可以接入 LLM 做更完整的问答。</p>
+          <div class="links">
+            <a class="link" href="./tests/test_agent.py">测试代码</a>
+            <a class="link" href="./samples/sample_paper.txt">示例文本</a>
+            <a class="link" href="./docs/benchmark.json">benchmark.json</a>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">© 2026 杨鹏程</footer>
     </main>
   </body>
 </html>

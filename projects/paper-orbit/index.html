@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Paper Orbit</title>
+    <meta
+      name="description"
+      content="Paper Orbit：论文阅读 RAG 项目，包含 FastAPI 后端、React 前端、文档解析、向量检索和来源返回。"
+    />
+    <title>Paper Orbit | 杨鹏程</title>
     <link rel="stylesheet" href="../project-page.css" />
   </head>
   <body>
     <main class="page">
-      <nav class="crumb"><a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a></nav>
+      <nav class="crumb" aria-label="面包屑导航">
+        <a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a><span>/</span><span>Paper Orbit</span>
+      </nav>
+
       <section class="hero">
         <p class="eyebrow">RAG / FastAPI / React</p>
         <h1>Paper Orbit</h1>
@@ -18,51 +25,95 @@
         <div class="actions">
           <a class="button primary" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">源码</a>
           <a class="button" href="./README.md">README</a>
+          <a class="button" href="/projects/">返回项目列表</a>
         </div>
       </section>
 
-      <section class="grid two">
+      <section class="kpis" aria-label="项目概览">
+        <div class="kpi"><strong>FastAPI</strong><span>上传、解析、问答接口</span></div>
+        <div class="kpi"><strong>ChromaDB</strong><span>本地向量库</span></div>
+        <div class="kpi"><strong>React</strong><span>阅读和提问界面</span></div>
+        <div class="kpi"><strong>Sources</strong><span>回答返回证据片段</span></div>
+      </section>
+
+      <section class="section grid two">
         <article class="panel">
           <h2>流程</h2>
-          <pre class="code">PDF / Word
-  -> parse
-  -> chunk
-  -> embedding
-  -> ChromaDB
-  -> retrieve
-  -> answer with sources</pre>
+          <div class="flow">
+            <div class="step"><strong>上传</strong><span>PDF / Word</span></div>
+            <div class="step"><strong>解析</strong><span>正文和章节</span></div>
+            <div class="step"><strong>切分</strong><span>检索片段</span></div>
+            <div class="step"><strong>检索</strong><span>Embedding + ChromaDB</span></div>
+            <div class="step"><strong>回答</strong><span>答案和来源</span></div>
+          </div>
         </article>
         <article class="panel">
           <h2>技术栈</h2>
           <div class="tags">
-            <span>Python</span><span>FastAPI</span><span>LangChain</span><span>ChromaDB</span>
-            <span>React</span><span>TypeScript</span>
+            <span>Python</span><span>FastAPI</span><span>Pydantic</span><span>LangChain</span>
+            <span>ChromaDB</span><span>PyMuPDF</span><span>python-docx</span><span>React</span><span>TypeScript</span>
           </div>
         </article>
       </section>
 
-      <section class="panel">
-        <h2>我主要做的部分</h2>
-        <ul>
-          <li>整理上传、解析、检索、问答的后端接口。</li>
-          <li>把 PDF / Word 文档拆成适合检索的文本片段。</li>
-          <li>用向量库保存片段，问答时返回相关来源。</li>
-          <li>做了 React 前端，用来上传论文、查看目录和提问。</li>
-        </ul>
+      <section class="section grid two">
+        <article class="panel">
+          <h2>我主要写的部分</h2>
+          <ul>
+            <li>整理上传、解析、检索、问答的后端接口。</li>
+            <li>把 PDF / Word 文档拆成适合检索的文本片段。</li>
+            <li>用向量库保存片段，问答时返回相关来源。</li>
+            <li>做 React 前端，用来上传论文、查看目录、阅读和提问。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h2>关键目录</h2>
+          <pre class="code">paper-orbit/
+  backend/
+    app/api/       # routes
+    app/core/      # RAG, vector store, retrieval
+    app/parsers/   # PDF / Word parsers
+    app/schemas/   # request and response models
+  frontend/
+    src/components/
+    src/services/
+    src/store/
+  scripts/</pre>
+        </article>
       </section>
 
-      <section class="panel">
-        <h2>本地运行</h2>
-        <pre class="code">cd projects/paper-orbit
+      <section class="section grid two">
+        <article class="panel">
+          <h2>本地运行</h2>
+          <pre class="code">cd projects/paper-orbit
 npm install
 npm run setup
 copy backend\.env.example backend\.env
-# 编辑 backend\.env，填写自己的 LLM_API_KEY
+# 编辑 backend\.env，填自己的 LLM_API_KEY
 npm run dev</pre>
-        <p class="note">
-          公开仓库不包含真实密钥、本地上传文件、ChromaDB 数据库和 node_modules。完整运行需要自己准备模型 API Key 和 embedding 模型。
-        </p>
+          <p class="note">默认端口：Backend `http://127.0.0.1:8000`，Frontend `http://127.0.0.1:5173`。</p>
+        </article>
+        <article class="panel">
+          <h2>公开版本说明</h2>
+          <p>公开仓库不包含真实密钥、本地上传文件、ChromaDB 数据库、node_modules 和虚拟环境。完整运行需要自己配置模型 API Key 和 embedding 模型。</p>
+          <div class="links">
+            <a class="link" href="./backend/.env.example">.env.example</a>
+            <a class="link" href="./backend/README.md">Backend README</a>
+            <a class="link" href="./frontend/README.md">Frontend README</a>
+          </div>
+        </article>
       </section>
+
+      <section class="section panel">
+        <h2>可以继续改的方向</h2>
+        <ul>
+          <li>加入更稳定的引用定位，让回答能回到原文段落或页码。</li>
+          <li>补更多不同论文格式的解析测试。</li>
+          <li>把检索策略和 rerank 做成可切换配置，方便比较效果。</li>
+        </ul>
+      </section>
+
+      <footer class="footer">© 2026 杨鹏程</footer>
     </main>
   </body>
 </html>

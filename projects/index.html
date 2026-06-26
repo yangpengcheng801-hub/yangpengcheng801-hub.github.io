@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="杨鹏程的 AI 应用项目列表：Paper Orbit、PaperPilot Lite、Agent Framework Lab。"
+    />
+    <title>Projects | 杨鹏程</title>
+    <link rel="stylesheet" href="./project-page.css" />
+  </head>
+  <body>
+    <main class="page">
+      <nav class="crumb" aria-label="面包屑导航"><a href="/">杨鹏程</a><span>/</span><span>Projects</span></nav>
+
+      <section class="hero compact">
+        <p class="eyebrow">Selected work</p>
+        <h1>Projects</h1>
+        <p class="lead">
+          这里放的是和 AI 应用开发关系比较近的项目。阅读顺序建议从 Paper Orbit 开始，再看轻量原型和
+          Agent 工作流练习。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/projects/paper-orbit/">Paper Orbit</a>
+          <a class="button" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects" target="_blank" rel="noreferrer">源码目录</a>
+        </div>
+      </section>
+
+      <section class="kpis" aria-label="项目概览">
+        <div class="kpi"><strong>3</strong><span>重点项目</span></div>
+        <div class="kpi"><strong>FastAPI</strong><span>后端接口</span></div>
+        <div class="kpi"><strong>RAG</strong><span>文档问答</span></div>
+        <div class="kpi"><strong>Agent</strong><span>工作流练习</span></div>
+      </section>
+
+      <section class="section project-list">
+        <article class="project-card">
+          <div class="project-card-side">
+            <div class="tags"><span>RAG</span><span>FastAPI</span><span>React</span></div>
+            <pre class="code">PDF / Word
+  -> parse
+  -> chunk
+  -> embedding
+  -> retrieve
+  -> answer with sources</pre>
+          </div>
+          <div class="project-card-body">
+            <a class="project-title" href="/projects/paper-orbit/">Paper Orbit</a>
+            <p>论文智能阅读系统。重点是把上传、解析、检索、问答和前端阅读界面串起来。</p>
+            <ul>
+              <li>适合看完整前后端结构和 RAG 链路。</li>
+              <li>需要配置模型 API Key 和 embedding 模型后完整运行。</li>
+              <li>公开仓库不提交真实密钥、上传文件和向量库数据。</li>
+            </ul>
+            <div class="links">
+              <a class="link primary" href="/projects/paper-orbit/">项目页</a>
+              <a class="link" href="/projects/paper-orbit/README.md">README</a>
+              <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">源码</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-side">
+            <div class="tags"><span>Local first</span><span>Paper reading</span></div>
+            <pre class="code">document
+  -> summary
+  -> evidence
+  -> local QA
+  -> notes</pre>
+          </div>
+          <div class="project-card-body">
+            <a class="project-title" href="/projects/paperpilot-lite/">PaperPilot Lite</a>
+            <p>轻量论文阅读助手原型。重点是本地解析、摘要、证据检索和问答流程。</p>
+            <ul>
+              <li>可以先不配置模型 API，运行基础分析流程。</li>
+              <li>保留截图、示例文档和测试代码。</li>
+              <li>适合快速看功能形态和原型迭代。</li>
+            </ul>
+            <div class="links">
+              <a class="link primary" href="/projects/paperpilot-lite/">项目页</a>
+              <a class="link" href="/projects/paperpilot-lite/README.md">README</a>
+              <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paperpilot-lite" target="_blank" rel="noreferrer">源码</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card-side">
+            <div class="tags"><span>Agent</span><span>Workflow</span><span>Python</span></div>
+            <pre class="code">role
+  -> message
+  -> state
+  -> graph
+  -> output</pre>
+          </div>
+          <div class="project-card-body">
+            <a class="project-title" href="/projects/agent-framework-lab/">Agent Framework Lab</a>
+            <p>智能体框架练习代码。重点是理解角色、消息、状态、任务分解和图式工作流。</p>
+            <ul>
+              <li>包含 AutoGen、AgentScope、CAMEL、LangGraph 风格实验。</li>
+              <li>基础实验不需要 API Key。</li>
+              <li>模板代码只读取环境变量，不提交真实密钥。</li>
+            </ul>
+            <div class="links">
+              <a class="link primary" href="/projects/agent-framework-lab/">项目页</a>
+              <a class="link" href="/projects/agent-framework-lab/README.md">README</a>
+              <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/agent-framework-lab" target="_blank" rel="noreferrer">源码</a>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section grid two">
+        <article class="panel">
+          <h2>本地运行</h2>
+          <p>每个项目都保留了 README。一般先进入对应目录，再按项目自己的命令安装依赖和启动。</p>
+          <pre class="code">cd projects/paperpilot-lite
+python -m pip install -r requirements.txt
+python app.py</pre>
+        </article>
+        <article class="panel">
+          <h2>公开仓库处理</h2>
+          <p>仓库只保留能说明项目结构的源码、示例和文档，不提交真实密钥、本地缓存、上传文件、向量库数据和虚拟环境。</p>
+        </article>
+      </section>
+
+      <footer class="footer">© 2026 杨鹏程</footer>
+    </main>
+  </body>
+</html>
