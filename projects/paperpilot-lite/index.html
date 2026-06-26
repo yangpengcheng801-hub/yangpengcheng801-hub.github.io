@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PaperPilot Lite</title>
+    <link rel="stylesheet" href="../project-page.css" />
+  </head>
+  <body>
+    <main class="page">
+      <nav class="crumb"><a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a></nav>
+      <section class="hero">
+        <p class="eyebrow">Local retrieval / paper reading</p>
+        <h1>PaperPilot Lite</h1>
+        <p class="lead">
+          一个轻量的论文阅读助手原型，主要验证本地解析、摘要、证据检索和问答流程。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paperpilot-lite" target="_blank" rel="noreferrer">源码</a>
+          <a class="button" href="./README.md">README</a>
+        </div>
+      </section>
+
+      <section class="panel screenshot">
+        <img src="./docs/assets/paperpilot-ui.png" alt="PaperPilot Lite UI 截图" />
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <h2>功能</h2>
+          <ul>
+            <li>支持 PDF / TXT / Markdown。</li>
+            <li>抽取摘要、关键词、方法、结果和局限。</li>
+            <li>问答时返回相关证据片段。</li>
+          </ul>
+        </article>
+        <article class="panel">
+          <h2>运行</h2>
+          <pre class="code">cd projects/paperpilot-lite
+python -m pip install -r requirements.txt
+python app.py</pre>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>

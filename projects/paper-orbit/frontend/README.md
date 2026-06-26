@@ -1,8 +1,8 @@
 # Frontend
 
-React + Vite 界面。完整说明见 [../README.md](../README.md)。
+React + Vite interface. See [../README.md](../README.md) for the full project guide.
 
 ```bash
-# 在项目根目录执行
+# Run from the project root.
 npm run dev:frontend
 ```

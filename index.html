@@ -3,37 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#f6f7f9" />
+    <meta name="theme-color" content="#f7f8fb" />
     <meta
       name="description"
-      content="杨鹏程的大模型应用开发实习作品集，展示 RAG、FastAPI、LangChain、ChromaDB、Agent 框架和数据工程项目。"
+      content="杨鹏程的项目主页：论文阅读 RAG、FastAPI 后端、文档解析和 Agent 框架练习。"
     />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="杨鹏程 | 大模型应用开发实习候选人" />
+    <meta property="og:title" content="杨鹏程 | 项目主页" />
     <meta
       property="og:description"
-      content="人工智能专业本科在读，主推 Paper Orbit 论文智能阅读 RAG 系统，关注文档智能、向量检索、引用溯源和 AI 应用工程化。"
+      content="人工智能专业本科在读，整理了一些和大模型应用、文档问答、FastAPI 后端相关的项目。"
     />
     <meta property="og:url" content="https://yangpengcheng801-hub.github.io/" />
-    <meta property="og:image" content="https://yangpengcheng801-hub.github.io/projects/paperpilot-lite/docs/assets/paperpilot-ui.png" />
-    <title>杨鹏程 | 大模型应用开发实习候选人</title>
+    <meta property="og:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png" />
+    <title>杨鹏程 | 项目主页</title>
     <link rel="icon" href="/img/favicon.ico" />
     <style>
       :root {
-        color-scheme: light;
-        --bg: #f6f7f9;
-        --panel: #ffffff;
+        --bg: #f7f8fb;
+        --paper: #ffffff;
         --ink: #111827;
         --muted: #667085;
-        --line: #d8dee8;
+        --line: #d9e0ea;
+        --soft: #f1f5f9;
         --cyan: #0891b2;
-        --green: #13966a;
-        --amber: #b7791f;
-        --red: #b42318;
-        --soft-cyan: #e6f7fb;
-        --soft-green: #e8f7ef;
-        --soft-amber: #fff4d6;
-        --shadow: 0 22px 70px rgba(17, 24, 39, 0.1);
+        --green: #15845d;
+        --amber: #a16207;
+        --shadow: 0 24px 70px rgba(15, 23, 42, 0.1);
         --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
         --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           "Microsoft YaHei", sans-serif;
@@ -49,10 +45,11 @@
 
       body {
         margin: 0;
-        background:
-          linear-gradient(90deg, rgba(216, 222, 232, 0.42) 1px, transparent 1px) 0 0 / 48px 48px,
-          linear-gradient(180deg, #ffffff 0%, var(--bg) 46%, #eef4f1 100%);
         color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 8%, rgba(8, 145, 178, 0.08), transparent 28rem),
+          linear-gradient(90deg, rgba(217, 224, 234, 0.55) 1px, transparent 1px) 0 0 / 44px 44px,
+          linear-gradient(180deg, #ffffff 0%, var(--bg) 55%, #edf5f1 100%);
         font-family: var(--sans);
         line-height: 1.65;
       }
@@ -68,21 +65,21 @@
       }
 
       .shell {
-        width: min(1160px, calc(100% - 40px));
+        width: min(1120px, calc(100% - 40px));
         margin: 0 auto;
       }
 
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 30;
-        border-bottom: 1px solid rgba(216, 222, 232, 0.9);
-        background: rgba(246, 247, 249, 0.88);
-        backdrop-filter: blur(18px);
+        z-index: 20;
+        border-bottom: 1px solid rgba(217, 224, 234, 0.9);
+        background: rgba(247, 248, 251, 0.9);
+        backdrop-filter: blur(16px);
       }
 
       .topbar-inner {
-        min-height: 72px;
+        min-height: 68px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -92,35 +89,19 @@
       .brand {
         display: flex;
         align-items: center;
-        min-width: 0;
         gap: 12px;
+        font-weight: 850;
       }
 
-      .brand-badge {
-        width: 38px;
-        height: 38px;
-        border-radius: 8px;
+      .brand-mark {
+        width: 36px;
+        height: 36px;
         display: grid;
         place-items: center;
+        border-radius: 9px;
         background: var(--ink);
-        color: #ffffff;
+        color: #fff;
         font: 800 13px/1 var(--mono);
-      }
-
-      .brand-title {
-        display: grid;
-        gap: 1px;
-      }
-
-      .brand-title strong {
-        font-size: 15px;
-        line-height: 1.2;
-      }
-
-      .brand-title span {
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.2;
       }
 
       .nav {
@@ -129,7 +110,7 @@
         gap: 18px;
         color: #475467;
         font-size: 14px;
-        font-weight: 700;
+        font-weight: 750;
       }
 
       .nav a:hover {
@@ -137,39 +118,36 @@
       }
 
       .hero {
-        min-height: calc(100vh - 72px);
-        padding: 62px 0 48px;
-        display: grid;
-        align-items: center;
+        padding: 74px 0 58px;
       }
 
       .hero-grid {
         display: grid;
-        grid-template-columns: 1fr 0.92fr;
+        grid-template-columns: 1fr 0.82fr;
         gap: 44px;
         align-items: center;
       }
 
-      .kicker {
+      .eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
-        margin: 0 0 20px;
-        padding: 8px 12px;
-        border: 1px solid rgba(8, 145, 178, 0.28);
+        gap: 8px;
+        margin: 0 0 18px;
+        padding: 7px 11px;
+        border: 1px solid rgba(8, 145, 178, 0.22);
         border-radius: 999px;
-        background: var(--soft-cyan);
+        background: #e9f8fb;
         color: #075b70;
         font-size: 13px;
-        font-weight: 800;
+        font-weight: 850;
       }
 
-      .signal {
+      .eyebrow::before {
+        content: "";
         width: 8px;
         height: 8px;
         border-radius: 999px;
         background: var(--green);
-        box-shadow: 0 0 0 5px rgba(19, 150, 106, 0.12);
       }
 
       h1,
@@ -180,331 +158,180 @@
       }
 
       h1 {
-        margin-bottom: 22px;
-        max-width: 820px;
-        font-size: clamp(38px, 7vw, 74px);
+        max-width: 780px;
+        margin-bottom: 20px;
+        font-size: clamp(42px, 7vw, 76px);
         line-height: 1.04;
         letter-spacing: 0;
       }
 
-      .hero-copy {
-        max-width: 690px;
-        color: #3c4658;
-        font-size: clamp(17px, 2vw, 21px);
+      .lead {
+        max-width: 680px;
+        margin-bottom: 28px;
+        color: #344054;
+        font-size: clamp(17px, 2vw, 20px);
       }
 
-      .hero-copy strong {
-        color: var(--ink);
-      }
-
-      .cta-row {
+      .actions {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
-        margin: 30px 0 26px;
       }
 
-      .btn {
+      .button {
+        min-height: 44px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 46px;
-        padding: 0 18px;
+        padding: 0 16px;
         border: 1px solid var(--ink);
         border-radius: 8px;
-        background: #ffffff;
-        color: var(--ink);
+        background: #fff;
         font-size: 14px;
         font-weight: 850;
-        transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
       }
 
-      .btn.primary {
+      .button.primary {
         background: var(--ink);
-        color: #ffffff;
-        box-shadow: 0 14px 34px rgba(17, 24, 39, 0.18);
+        color: #fff;
+        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
       }
 
-      .btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 28px rgba(17, 24, 39, 0.12);
+      .button:hover,
+      .link:hover {
+        transform: translateY(-1px);
       }
 
-      .proof-strip {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        max-width: 670px;
+      .profile-card {
+        overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.76);
-        overflow: hidden;
-      }
-
-      .proof-item {
-        min-height: 82px;
-        padding: 14px 16px;
-        border-right: 1px solid var(--line);
-      }
-
-      .proof-item:last-child {
-        border-right: 0;
-      }
-
-      .proof-item strong {
-        display: block;
-        font-size: 22px;
-        line-height: 1.15;
-      }
-
-      .proof-item span {
-        display: block;
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 12px;
-        line-height: 1.35;
-      }
-
-      .hero-visual {
-        position: relative;
-      }
-
-      .product-frame {
-        overflow: hidden;
-        border: 1px solid #cfd7e4;
-        border-radius: 8px;
-        background: var(--panel);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.9);
         box-shadow: var(--shadow);
       }
 
-      .frame-bar {
-        height: 42px;
-        display: flex;
+      .profile-head {
+        padding: 22px;
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 16px;
         align-items: center;
-        gap: 8px;
-        padding: 0 14px;
         border-bottom: 1px solid var(--line);
-        background: #f8fafc;
       }
 
-      .dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-        background: #cbd5e1;
+      .avatar {
+        width: 78px;
+        height: 78px;
+        border-radius: 18px;
+        object-fit: cover;
+        background: var(--soft);
       }
 
-      .dot.cyan {
-        background: var(--cyan);
+      .profile-head h2 {
+        margin: 0 0 4px;
+        font-size: 24px;
       }
 
-      .dot.green {
-        background: var(--green);
-      }
-
-      .frame-body {
-        display: grid;
-        grid-template-columns: 0.78fr 1.22fr;
-        min-height: 480px;
-      }
-
-      .sidebar {
-        padding: 18px;
-        border-right: 1px solid var(--line);
-        background: #fbfcfe;
-      }
-
-      .mini-label {
-        margin-bottom: 14px;
+      .profile-head p {
+        margin: 0;
         color: var(--muted);
-        font-size: 11px;
-        font-weight: 850;
-        text-transform: uppercase;
       }
 
-      .pipeline {
+      .profile-body {
+        padding: 20px 22px 22px;
+      }
+
+      .kv {
         display: grid;
-        gap: 9px;
+        gap: 12px;
       }
 
-      .pipe-step {
-        min-height: 44px;
+      .kv div {
         display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px;
-        border: 1px solid #e4e9f1;
-        border-radius: 8px;
-        background: #ffffff;
-        color: #344054;
-        font-size: 13px;
-        font-weight: 750;
-      }
-
-      .step-mark {
-        width: 22px;
-        height: 22px;
-        display: grid;
-        place-items: center;
-        border-radius: 6px;
-        background: var(--soft-green);
-        color: var(--green);
-        font: 850 11px/1 var(--mono);
-      }
-
-      .mock-main {
-        padding: 20px;
-      }
-
-      .paper-head {
-        display: flex;
-        align-items: start;
         justify-content: space-between;
-        gap: 18px;
-        margin-bottom: 18px;
+        gap: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #edf0f5;
+        color: #344054;
       }
 
-      .paper-head h2 {
-        margin-bottom: 7px;
-        font-size: 22px;
-        line-height: 1.25;
+      .kv span:first-child {
+        color: var(--muted);
       }
 
-      .status-pill {
-        flex: 0 0 auto;
-        padding: 6px 9px;
-        border-radius: 999px;
-        background: var(--soft-green);
-        color: #08724f;
-        font-size: 12px;
-        font-weight: 850;
-      }
-
-      .answer-block {
+      .repo-preview {
+        margin-top: 18px;
         padding: 16px;
         border: 1px solid #dbe7ed;
-        border-radius: 8px;
-        background: linear-gradient(180deg, #ffffff, #f6fbfc);
+        border-radius: 10px;
+        background: #f8fbfc;
       }
 
-      .answer-block p {
-        margin-bottom: 12px;
+      .repo-preview strong {
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .repo-preview code {
+        display: block;
         color: #344054;
-        font-size: 14px;
-      }
-
-      .citation-list {
-        display: grid;
-        gap: 8px;
-      }
-
-      .citation {
-        padding: 10px;
-        border-left: 3px solid var(--cyan);
-        border-radius: 6px;
-        background: #ffffff;
-        color: #475467;
-        font-size: 12px;
-      }
-
-      .metrics {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-        margin-top: 14px;
-      }
-
-      .metric {
-        min-height: 82px;
-        padding: 12px;
-        border: 1px solid #e4e9f1;
-        border-radius: 8px;
-        background: #ffffff;
-      }
-
-      .metric strong {
-        display: block;
-        font-size: 20px;
-      }
-
-      .metric span {
-        color: var(--muted);
-        font-size: 12px;
-      }
-
-      .float-card {
-        position: absolute;
-        right: -14px;
-        bottom: -22px;
-        width: min(260px, 52%);
-        padding: 14px;
-        border: 1px solid rgba(183, 121, 31, 0.3);
-        border-radius: 8px;
-        background: #fffaf0;
-        box-shadow: 0 18px 48px rgba(17, 24, 39, 0.12);
-      }
-
-      .float-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: #8a4b0f;
-      }
-
-      .float-card span {
-        color: #6b4d1d;
-        font-size: 12px;
+        font: 13px/1.7 var(--mono);
+        white-space: pre-wrap;
       }
 
       section {
-        padding: 72px 0;
+        padding: 62px 0;
       }
 
       .section-head {
         display: flex;
         align-items: end;
         justify-content: space-between;
-        gap: 34px;
-        margin-bottom: 26px;
+        gap: 30px;
+        margin-bottom: 24px;
       }
 
       .section-head h2 {
         margin-bottom: 0;
-        font-size: clamp(28px, 4vw, 44px);
+        font-size: clamp(28px, 4vw, 42px);
         line-height: 1.12;
-        letter-spacing: 0;
       }
 
       .section-head p {
-        max-width: 560px;
+        max-width: 540px;
         margin-bottom: 0;
         color: var(--muted);
       }
 
-      .fit-grid {
+      .stack {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 14px;
       }
 
-      .card {
-        min-height: 208px;
-        padding: 22px;
+      .mini-card,
+      .project,
+      .timeline-card {
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.84);
-        box-shadow: 0 12px 36px rgba(17, 24, 39, 0.06);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 12px 36px rgba(15, 23, 42, 0.06);
       }
 
-      .card h3,
-      .case-body h3,
+      .mini-card {
+        min-height: 168px;
+        padding: 20px;
+      }
+
+      .mini-card h3,
+      .project h3,
       .timeline-card h3 {
         margin-bottom: 10px;
         font-size: 20px;
-        line-height: 1.25;
-        letter-spacing: 0;
       }
 
-      .card p,
-      .case-body p,
+      .mini-card p,
+      .project p,
       .timeline-card p {
         color: var(--muted);
       }
@@ -513,93 +340,71 @@
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
-        margin-top: 18px;
+        margin-top: 16px;
       }
 
       .tag {
         padding: 5px 9px;
-        border: 1px solid rgba(17, 24, 39, 0.12);
+        border: 1px solid rgba(15, 23, 42, 0.12);
         border-radius: 999px;
-        background: #ffffff;
+        background: #fff;
         color: #344054;
         font-size: 12px;
         font-weight: 800;
       }
 
-      .cases {
+      .projects {
         display: grid;
-        gap: 18px;
+        gap: 16px;
       }
 
-      .case {
+      .project {
         display: grid;
-        grid-template-columns: 0.95fr 1.05fr;
+        grid-template-columns: 0.86fr 1.14fr;
         overflow: hidden;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 14px 44px rgba(17, 24, 39, 0.07);
       }
 
-      .case-media {
-        min-height: 330px;
+      .project-side {
+        min-height: 286px;
         padding: 22px;
         border-right: 1px solid var(--line);
-        background: #eef6f8;
+        background: #eef7fa;
         display: grid;
         align-content: space-between;
         gap: 18px;
       }
 
-      .case:nth-child(2) .case-media {
+      .project:nth-child(2) .project-side {
         background: #eef8f2;
       }
 
-      .case:nth-child(3) .case-media {
-        background: #fff7df;
+      .project:nth-child(3) .project-side {
+        background: #fff8e1;
       }
 
-      .case:nth-child(4) .case-media {
-        background: #f4f0ff;
-      }
-
-      .case-kicker {
+      .project-side span {
         color: #475467;
         font-size: 13px;
         font-weight: 850;
       }
 
-      .code-preview {
+      .code {
         margin: 0;
         padding: 16px;
-        border: 1px solid rgba(17, 24, 39, 0.12);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(15, 23, 42, 0.12);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.82);
         color: #263241;
         font: 13px/1.75 var(--mono);
         white-space: pre-wrap;
       }
 
-      .screenshot {
-        overflow: hidden;
-        border: 1px solid rgba(17, 24, 39, 0.14);
-        border-radius: 8px;
-        background: #ffffff;
-        box-shadow: 0 18px 42px rgba(17, 24, 39, 0.12);
+      .project-body {
+        padding: 26px;
       }
 
-      .screenshot img {
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        object-fit: cover;
-      }
-
-      .case-body {
-        padding: 28px;
-      }
-
-      .case-body ul {
-        margin: 18px 0 0;
+      .project-body ul {
+        margin: 16px 0 0;
         padding-left: 20px;
         color: #344054;
       }
@@ -608,26 +413,19 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 22px;
+        margin-top: 20px;
       }
 
-      .link-btn {
-        min-height: 38px;
+      .link {
+        min-height: 36px;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        padding: 0 13px;
+        padding: 0 12px;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background: #ffffff;
-        color: var(--ink);
+        background: #fff;
         font-size: 13px;
         font-weight: 850;
-      }
-
-      .link-btn:hover {
-        border-color: var(--cyan);
-        color: var(--cyan);
       }
 
       .timeline {
@@ -637,53 +435,50 @@
       }
 
       .timeline-card {
-        min-height: 206px;
-        padding: 22px;
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        background: #ffffff;
+        padding: 20px;
       }
 
       .date {
         display: inline-flex;
-        margin-bottom: 12px;
+        margin-bottom: 10px;
         color: var(--green);
         font-size: 13px;
-        font-weight: 900;
+        font-weight: 850;
       }
 
-      .contact-panel {
+      .contact {
+        padding-bottom: 78px;
+      }
+
+      .contact-box {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
-        gap: 30px;
+        gap: 24px;
         align-items: center;
-        padding: 34px;
-        border-radius: 8px;
-        background:
-          linear-gradient(90deg, rgba(8, 145, 178, 0.2), transparent 42%),
-          #111827;
-        color: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        background: #101828;
+        color: #fff;
         box-shadow: var(--shadow);
       }
 
-      .contact-panel h2 {
-        margin-bottom: 14px;
-        font-size: clamp(28px, 4vw, 48px);
-        line-height: 1.1;
+      .contact-box h2 {
+        margin-bottom: 10px;
+        font-size: clamp(28px, 4vw, 44px);
       }
 
-      .contact-panel p {
+      .contact-box p {
         margin-bottom: 0;
         color: rgba(255, 255, 255, 0.72);
       }
 
-      .contact-list {
+      .contact-links {
         display: grid;
         gap: 10px;
       }
 
-      .contact-list a {
-        min-height: 50px;
+      .contact-links a {
+        min-height: 48px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -696,95 +491,52 @@
       }
 
       footer {
-        padding: 28px 0 38px;
+        padding: 24px 0 34px;
         border-top: 1px solid var(--line);
         color: var(--muted);
         font-size: 14px;
       }
 
-      @media (max-width: 980px) {
-        .hero {
-          min-height: auto;
-          padding-top: 42px;
-        }
-
+      @media (max-width: 900px) {
         .hero-grid,
-        .case,
-        .contact-panel {
+        .project,
+        .contact-box {
           grid-template-columns: 1fr;
         }
 
-        .case-media {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .fit-grid,
+        .stack,
         .timeline {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        .project-side {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
         }
 
         .nav {
           display: none;
         }
-
-        .float-card {
-          right: 14px;
-        }
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 620px) {
         .shell {
-          width: min(100% - 24px, 1160px);
-        }
-
-        .topbar-inner {
-          min-height: 64px;
+          width: min(100% - 24px, 1120px);
         }
 
         .hero {
-          padding: 30px 0 34px;
+          padding-top: 42px;
         }
 
-        .cta-row,
-        .proof-strip,
-        .fit-grid,
-        .timeline,
-        .metrics {
-          grid-template-columns: 1fr;
-        }
-
-        .cta-row {
+        .actions,
+        .stack,
+        .timeline {
           display: grid;
-        }
-
-        .btn {
-          width: 100%;
-        }
-
-        .proof-item {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .proof-item:last-child {
-          border-bottom: 0;
-        }
-
-        .frame-body {
           grid-template-columns: 1fr;
-          min-height: auto;
         }
 
-        .sidebar {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
-        }
-
-        .float-card {
-          position: static;
+        .button {
           width: 100%;
-          margin-top: 14px;
         }
 
         .section-head {
@@ -796,12 +548,12 @@
         }
 
         section {
-          padding: 54px 0;
+          padding: 48px 0;
         }
 
-        .case-body,
-        .case-media,
-        .contact-panel {
+        .project-body,
+        .project-side,
+        .contact-box {
           padding: 22px;
         }
       }
@@ -810,15 +562,12 @@
   <body>
     <header class="topbar">
       <div class="shell topbar-inner">
-        <a class="brand" href="#top" aria-label="返回首页">
-          <span class="brand-badge">YP</span>
-          <span class="brand-title">
-            <strong>杨鹏程</strong>
-            <span>LLM Application Intern</span>
-          </span>
+        <a class="brand" href="#top">
+          <span class="brand-mark">YP</span>
+          <span>杨鹏程</span>
         </a>
-        <nav class="nav" aria-label="主导航">
-          <a href="#fit">岗位匹配</a>
+        <nav class="nav">
+          <a href="#stack">技能</a>
           <a href="#projects">项目</a>
           <a href="#timeline">经历</a>
           <a href="#contact">联系</a>
@@ -830,135 +579,71 @@
       <section class="hero">
         <div class="shell hero-grid">
           <div>
-            <p class="kicker"><span class="signal"></span>大模型应用开发实习候选人</p>
-            <h1>把论文、知识库和大模型问答做成可解释的工程系统。</h1>
-            <p class="hero-copy">
-              我是杨鹏程，武汉轻工大学人工智能专业本科在读。主线项目是
-              <strong>Paper Orbit 论文智能阅读 RAG 系统</strong>，重点实践 FastAPI、LangChain、ChromaDB、文档解析、向量检索、引用溯源和 Agent 工作流。
+            <p class="eyebrow">AI 应用开发 / Python 后端 / RAG</p>
+            <h1>我主要在做论文阅读和文档问答方向的项目。</h1>
+            <p class="lead">
+              目前本科在读，专业是人工智能。最近整理的项目集中在 RAG、文档解析、FastAPI 后端、向量检索和 Agent 框架练习。
+              这个页面放的是可以直接查看的项目入口和源码。
             </p>
-            <div class="cta-row">
-              <a class="btn primary" href="/projects/paper-orbit/">查看主推项目源码</a>
-              <a class="btn" href="#projects">浏览项目案例</a>
-              <a class="btn" href="mailto:1756325284@qq.com">联系我</a>
-            </div>
-            <div class="proof-strip" aria-label="候选人概览">
-              <div class="proof-item">
-                <strong>RAG</strong>
-                <span>文档解析、召回、重排、引用溯源</span>
-              </div>
-              <div class="proof-item">
-                <strong>FastAPI</strong>
-                <span>上传、检索、问答接口工程化</span>
-              </div>
-              <div class="proof-item">
-                <strong>3m+</strong>
-                <span>可持续实习周期，随时到岗沟通</span>
-              </div>
+            <div class="actions">
+              <a class="button primary" href="/projects/paper-orbit/">Paper Orbit</a>
+              <a class="button" href="/projects/">项目列表</a>
+              <a class="button" href="mailto:1756325284@qq.com">联系我</a>
             </div>
           </div>
 
-          <aside class="hero-visual" aria-label="RAG 系统可视化">
-            <div class="product-frame">
-              <div class="frame-bar">
-                <span class="dot"></span>
-                <span class="dot cyan"></span>
-                <span class="dot green"></span>
-              </div>
-              <div class="frame-body">
-                <div class="sidebar">
-                  <div class="mini-label">Paper Orbit Pipeline</div>
-                  <div class="pipeline">
-                    <div class="pipe-step"><span class="step-mark">01</span>Upload PDF / Word</div>
-                    <div class="pipe-step"><span class="step-mark">02</span>Parse & Chunk</div>
-                    <div class="pipe-step"><span class="step-mark">03</span>Embedding</div>
-                    <div class="pipe-step"><span class="step-mark">04</span>Retrieve + Rerank</div>
-                    <div class="pipe-step"><span class="step-mark">05</span>Answer with Sources</div>
-                  </div>
-                </div>
-                <div class="mock-main">
-                  <div class="paper-head">
-                    <div>
-                      <h2>论文问答结果</h2>
-                      <p>基于召回片段生成答案，并返回可核验引用。</p>
-                    </div>
-                    <span class="status-pill">Grounded</span>
-                  </div>
-                  <div class="answer-block">
-                    <p>
-                      系统先解析论文结构，再对章节片段向量化。用户提问时，先召回相关上下文，再交给模型生成答案。
-                    </p>
-                    <div class="citation-list">
-                      <div class="citation">Source 1: Section 2.1, Method Design</div>
-                      <div class="citation">Source 2: Section 4.3, Experiment Result</div>
-                    </div>
-                  </div>
-                  <div class="metrics">
-                    <div class="metric">
-                      <strong>PDF</strong>
-                      <span>论文解析</span>
-                    </div>
-                    <div class="metric">
-                      <strong>Vector</strong>
-                      <span>语义召回</span>
-                    </div>
-                    <div class="metric">
-                      <strong>Trace</strong>
-                      <span>引用溯源</span>
-                    </div>
-                  </div>
-                </div>
+          <aside class="profile-card">
+            <div class="profile-head">
+              <img class="avatar" src="/img/avatar.png" alt="杨鹏程头像" />
+              <div>
+                <h2>杨鹏程</h2>
+                <p>人工智能专业本科在读</p>
               </div>
             </div>
-            <div class="float-card">
-              <strong>面试讲解重点</strong>
-              <span>为什么做 RAG、如何降低幻觉、如何设计 chunk、rerank 和评估。</span>
+            <div class="profile-body">
+              <div class="kv">
+                <div><span>方向</span><strong>大模型应用 / 后端</strong></div>
+                <div><span>主要项目</span><strong>Paper Orbit</strong></div>
+                <div><span>常用技术</span><strong>Python / FastAPI</strong></div>
+              </div>
+              <div class="repo-preview">
+                <strong>最近整理</strong>
+                <code>projects/
+  paper-orbit/
+  paperpilot-lite/
+  agent-framework-lab/</code>
+              </div>
             </div>
           </aside>
         </div>
       </section>
 
-      <section id="fit">
+      <section id="stack">
         <div class="shell">
           <div class="section-head">
-            <h2>岗位匹配点</h2>
-            <p>我把页面收敛到大模型应用实习最相关的能力，面试官可以直接沿着这些点追问。</p>
+            <h2>技术方向</h2>
+            <p>这些是项目里实际用到或正在补强的部分。</p>
           </div>
-          <div class="fit-grid">
-            <article class="card">
-              <h3>RAG 链路</h3>
-              <p>能解释上传、解析、切分、Embedding、向量库、召回、重排、Prompt 组装、生成和引用返回。</p>
-              <div class="tags">
-                <span class="tag">Chunking</span>
-                <span class="tag">Embedding</span>
-                <span class="tag">Rerank</span>
-              </div>
+          <div class="stack">
+            <article class="mini-card">
+              <h3>RAG</h3>
+              <p>文档切分、Embedding、向量检索、引用来源返回。</p>
+              <div class="tags"><span class="tag">LangChain</span><span class="tag">ChromaDB</span></div>
             </article>
-            <article class="card">
-              <h3>Python 后端</h3>
-              <p>用 FastAPI 组织上传、解析、检索和问答接口，关注模块拆分、异常处理和配置管理。</p>
-              <div class="tags">
-                <span class="tag">FastAPI</span>
-                <span class="tag">Pydantic</span>
-                <span class="tag">Async</span>
-              </div>
+            <article class="mini-card">
+              <h3>后端</h3>
+              <p>用 FastAPI 写上传、解析、检索和问答接口。</p>
+              <div class="tags"><span class="tag">FastAPI</span><span class="tag">Pydantic</span></div>
             </article>
-            <article class="card">
-              <h3>文档智能</h3>
-              <p>处理 PDF / Word / TXT，抽取章节、摘要、关键词和证据片段，为模型准备更干净的上下文。</p>
-              <div class="tags">
-                <span class="tag">PyMuPDF</span>
-                <span class="tag">python-docx</span>
-                <span class="tag">Metadata</span>
-              </div>
+            <article class="mini-card">
+              <h3>文档处理</h3>
+              <p>处理 PDF、Word、TXT，提取正文和章节结构。</p>
+              <div class="tags"><span class="tag">PyMuPDF</span><span class="tag">python-docx</span></div>
             </article>
-            <article class="card">
-              <h3>Agent 思维</h3>
-              <p>学习 AutoGen、AgentScope、CAMEL、LangGraph 的角色、消息、状态和图式工作流。</p>
-              <div class="tags">
-                <span class="tag">Agent</span>
-                <span class="tag">Workflow</span>
-                <span class="tag">Tools</span>
-              </div>
+            <article class="mini-card">
+              <h3>Agent</h3>
+              <p>学习多角色协作、消息流、状态和图式工作流。</p>
+              <div class="tags"><span class="tag">LangGraph</span><span class="tag">AutoGen</span></div>
             </article>
           </div>
         </div>
@@ -967,124 +652,79 @@
       <section id="projects">
         <div class="shell">
           <div class="section-head">
-            <h2>项目案例</h2>
-            <p>主推 Paper Orbit，其余项目作为能力补充，展示从原型、工程化到 Agent 学习的连续性。</p>
+            <h2>项目</h2>
+            <p>只保留和大模型应用方向关系比较近的项目。</p>
           </div>
-          <div class="cases">
-            <article class="case">
-              <div class="case-media">
-                <span class="case-kicker">Main Project / RAG System</span>
-                <pre class="code-preview">PDF / Word
+          <div class="projects">
+            <article class="project">
+              <div class="project-side">
+                <span>RAG / FastAPI / React</span>
+                <pre class="code">PDF / Word
   -> parse
   -> chunk
   -> embedding
-  -> ChromaDB
-  -> retrieve + rerank
-  -> answer + citation</pre>
+  -> retrieve
+  -> answer with sources</pre>
               </div>
-              <div class="case-body">
-                <h3>Paper Orbit 论文智能阅读 RAG 系统</h3>
-                <p>面向论文阅读效率低、信息定位慢和大模型长文幻觉问题，搭建完整 RAG 应用。</p>
+              <div class="project-body">
+                <h3>Paper Orbit</h3>
+                <p>论文智能阅读系统。上传论文后做解析、分段、向量检索和问答，回答里会带来源位置。</p>
                 <ul>
-                  <li>后端使用 FastAPI，前端使用 React + TypeScript。</li>
-                  <li>支持 PDF / Word 解析、章节切分、向量检索和问答生成。</li>
-                  <li>回答保留引用来源，方便用户回到原文核验。</li>
-                  <li>可继续优化混合检索、rerank、缓存和评估集。</li>
+                  <li>后端：FastAPI、Pydantic、LangChain、ChromaDB。</li>
+                  <li>前端：React、TypeScript、Vite。</li>
+                  <li>公开版去掉了 API Key、上传文件和运行时数据库。</li>
                 </ul>
                 <div class="links">
-                  <a class="link-btn" href="/projects/paper-orbit/">项目 README</a>
-                  <a class="link-btn" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">GitHub 源码</a>
-                </div>
-                <div class="tags">
-                  <span class="tag">FastAPI</span>
-                  <span class="tag">LangChain</span>
-                  <span class="tag">ChromaDB</span>
-                  <span class="tag">React</span>
+                  <a class="link" href="/projects/paper-orbit/">项目页</a>
+                  <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">源码</a>
                 </div>
               </div>
             </article>
 
-            <article class="case">
-              <div class="case-media">
-                <span class="case-kicker">Prototype / Local First</span>
-                <div class="screenshot">
-                  <img src="/projects/paperpilot-lite/docs/assets/paperpilot-ui.png" alt="PaperPilot Lite 界面截图" />
-                </div>
+            <article class="project">
+              <div class="project-side">
+                <span>Prototype / Local first</span>
+                <pre class="code">document
+  -> summary
+  -> evidence
+  -> local QA
+  -> markdown notes</pre>
               </div>
-              <div class="case-body">
-                <h3>PaperPilot Lite 本地优先论文阅读助手</h3>
-                <p>Paper Orbit 之前的轻量验证版本，先把本地解析、检索、证据约束问答跑通，再做工程化升级。</p>
+              <div class="project-body">
+                <h3>PaperPilot Lite</h3>
+                <p>一个更轻量的论文阅读助手原型，用来验证本地解析、摘要、证据约束问答这些功能。</p>
                 <ul>
-                  <li>支持 PDF / TXT / Markdown 输入。</li>
-                  <li>抽取摘要、关键词、方法、实验结果、贡献和局限。</li>
-                  <li>可选接入大模型增强表达，本地模式也能演示。</li>
+                  <li>支持 PDF / TXT / Markdown。</li>
+                  <li>可以在没有模型 API 的情况下跑本地分析。</li>
+                  <li>包含测试、示例文件和页面截图。</li>
                 </ul>
                 <div class="links">
-                  <a class="link-btn" href="/projects/paperpilot-lite/">项目 README</a>
-                </div>
-                <div class="tags">
-                  <span class="tag">Local Retrieval</span>
-                  <span class="tag">Evidence QA</span>
-                  <span class="tag">Tests</span>
+                  <a class="link" href="/projects/paperpilot-lite/">项目页</a>
+                  <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paperpilot-lite" target="_blank" rel="noreferrer">源码</a>
                 </div>
               </div>
             </article>
 
-            <article class="case">
-              <div class="case-media">
-                <span class="case-kicker">Agent / Framework Practice</span>
-                <pre class="code-preview">role
+            <article class="project">
+              <div class="project-side">
+                <span>Agent / workflow</span>
+                <pre class="code">role
   -> message
   -> state
-  -> tool call
-  -> graph edge
-  -> reflection</pre>
+  -> graph
+  -> output</pre>
               </div>
-              <div class="case-body">
-                <h3>Agent Framework Lab 智能体框架实践</h3>
-                <p>用教学版实验理解 AutoGen、AgentScope、CAMEL、LangGraph 的核心机制。</p>
+              <div class="project-body">
+                <h3>Agent Framework Lab</h3>
+                <p>整理几个智能体框架的练习代码，主要看角色分工、消息流、任务分解和图式工作流。</p>
                 <ul>
-                  <li>复现多角色协作、消息中心、任务分解和图式工作流。</li>
-                  <li>区分教学版机制复现和真实框架模板边界。</li>
-                  <li>可迁移到工具调用、任务编排和多步骤处理场景。</li>
+                  <li>包含 AutoGen、AgentScope、CAMEL、LangGraph 风格的实验。</li>
+                  <li>教学版实验不需要 API Key。</li>
+                  <li>真实框架模板只保留配置示例。</li>
                 </ul>
                 <div class="links">
-                  <a class="link-btn" href="/projects/agent-framework-lab/">项目 README</a>
-                </div>
-                <div class="tags">
-                  <span class="tag">AutoGen</span>
-                  <span class="tag">LangGraph</span>
-                  <span class="tag">CAMEL</span>
-                </div>
-              </div>
-            </article>
-
-            <article class="case">
-              <div class="case-media">
-                <span class="case-kicker">Data Engineering / Web App</span>
-                <pre class="code-preview">crawler data
-  -> clean
-  -> structure
-  -> MySQL / CSV
-  -> analysis
-  -> app demo</pre>
-              </div>
-              <div class="case-body">
-                <h3>数据工程与 Web 应用补充</h3>
-                <p>保留爬虫、数据清洗和 CET-4 Web/PWA 应用作为辅助证明，但不抢大模型主线。</p>
-                <ul>
-                  <li>做过多平台数据采集、结构化存储和分析。</li>
-                  <li>熟悉 Python、Pandas、MySQL、Scrapy、Playwright。</li>
-                  <li>CET-4 单词应用已部署在 GitHub Pages，可直接在线体验。</li>
-                </ul>
-                <div class="links">
-                  <a class="link-btn" href="/cet4-app/">CET-4 App Demo</a>
-                </div>
-                <div class="tags">
-                  <span class="tag">Python</span>
-                  <span class="tag">Pandas</span>
-                  <span class="tag">MySQL</span>
-                  <span class="tag">PWA</span>
+                  <a class="link" href="/projects/agent-framework-lab/">项目页</a>
+                  <a class="link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/agent-framework-lab" target="_blank" rel="noreferrer">源码</a>
                 </div>
               </div>
             </article>
@@ -1095,42 +735,40 @@
       <section id="timeline">
         <div class="shell">
           <div class="section-head">
-            <h2>背景与经历</h2>
-            <p>把履历信息压到最必要，避免页面像简历复读，重点为项目背书。</p>
+            <h2>经历</h2>
+            <p>一些基本背景。</p>
           </div>
           <div class="timeline">
             <article class="timeline-card">
               <span class="date">2023.09 - 2027.06</span>
               <h3>武汉轻工大学</h3>
-              <p>人工智能专业本科在读，持续补强机器学习、数据处理、后端接口和大模型应用工程能力。</p>
+              <p>人工智能专业本科在读。</p>
             </article>
             <article class="timeline-card">
               <span class="date">2024 - 2025</span>
-              <h3>竞赛与实践</h3>
-              <p>参与数学建模、智能机器人等实践，积累问题建模、数据分析和方案表达能力。</p>
+              <h3>项目和竞赛</h3>
+              <p>做过数据处理、建模、机器人和文档问答相关练习。</p>
             </article>
             <article class="timeline-card">
-              <span class="date">2025 - 2026</span>
-              <h3>实习方向准备</h3>
-              <p>主线准备大模型应用开发，重点围绕 RAG、FastAPI、文档智能、Agent 框架和项目讲解。</p>
+              <span class="date">现在</span>
+              <h3>主要方向</h3>
+              <p>继续完善 RAG、FastAPI、文档处理和 Agent 相关项目。</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="contact">
+      <section class="contact" id="contact">
         <div class="shell">
-          <div class="contact-panel">
+          <div class="contact-box">
             <div>
-              <h2>欢迎查看源码，也欢迎直接联系我。</h2>
-              <p>
-                我目前重点寻找大模型应用开发、AI 工程、Python 后端相关实习岗位。这个页面是我的项目索引和面试前快速了解入口。
-              </p>
+              <h2>联系方式</h2>
+              <p>如果需要了解项目细节，可以直接看源码或邮件联系我。</p>
             </div>
-            <div class="contact-list">
+            <div class="contact-links">
               <a href="mailto:1756325284@qq.com"><span>1756325284@qq.com</span><span>Mail</span></a>
-              <a href="https://github.com/yangpengcheng801-hub" target="_blank" rel="noreferrer"><span>GitHub Profile</span><span>Open</span></a>
-              <a href="/projects/"><span>Projects Index</span><span>View</span></a>
+              <a href="https://github.com/yangpengcheng801-hub" target="_blank" rel="noreferrer"><span>GitHub</span><span>Open</span></a>
+              <a href="/projects/"><span>Projects</span><span>View</span></a>
             </div>
           </div>
         </div>
@@ -1138,7 +776,7 @@
     </main>
 
     <footer>
-      <div class="shell">© 2026 杨鹏程. Built for LLM internship interviews.</div>
+      <div class="shell">© 2026 杨鹏程</div>
     </footer>
   </body>
 </html>

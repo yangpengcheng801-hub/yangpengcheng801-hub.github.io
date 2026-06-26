@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paper Orbit</title>
+    <link rel="stylesheet" href="../project-page.css" />
+  </head>
+  <body>
+    <main class="page">
+      <nav class="crumb"><a href="/">杨鹏程</a><span>/</span><a href="/projects/">Projects</a></nav>
+      <section class="hero">
+        <p class="eyebrow">RAG / FastAPI / React</p>
+        <h1>Paper Orbit</h1>
+        <p class="lead">
+          一个论文阅读 RAG 项目。上传 PDF 或 Word 后，后端解析文档、切分片段、写入向量库；提问时先检索相关片段，再生成回答和来源。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">源码</a>
+          <a class="button" href="./README.md">README</a>
+        </div>
+      </section>
+
+      <section class="grid two">
+        <article class="panel">
+          <h2>流程</h2>
+          <pre class="code">PDF / Word
+  -> parse
+  -> chunk
+  -> embedding
+  -> ChromaDB
+  -> retrieve
+  -> answer with sources</pre>
+        </article>
+        <article class="panel">
+          <h2>技术栈</h2>
+          <div class="tags">
+            <span>Python</span><span>FastAPI</span><span>LangChain</span><span>ChromaDB</span>
+            <span>React</span><span>TypeScript</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel">
+        <h2>我主要做的部分</h2>
+        <ul>
+          <li>整理上传、解析、检索、问答的后端接口。</li>
+          <li>把 PDF / Word 文档拆成适合检索的文本片段。</li>
+          <li>用向量库保存片段，问答时返回相关来源。</li>
+          <li>做了 React 前端，用来上传论文、查看目录和提问。</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>本地运行</h2>
+        <pre class="code">cd projects/paper-orbit
+npm install
+npm run setup
+copy backend\.env.example backend\.env
+# 编辑 backend\.env，填写自己的 LLM_API_KEY
+npm run dev</pre>
+        <p class="note">
+          公开仓库不包含真实密钥、本地上传文件、ChromaDB 数据库和 node_modules。完整运行需要自己准备模型 API Key 和 embedding 模型。
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
