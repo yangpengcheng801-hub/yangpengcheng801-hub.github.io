@@ -1,409 +1,1004 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>我的技术博客 - Python全栈学习之路</title><meta name="author" content="汪洋大海"><meta name="copyright" content="汪洋大海"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="记录我的编程成长历程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的技术博客">
-<meta property="og:url" content="https://yangpengcheng801-hub.github.io/index.html">
-<meta property="og:site_name" content="我的技术博客">
-<meta property="og:description" content="记录我的编程成长历程">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png">
-<meta property="article:author" content="汪洋大海">
-<meta property="article:tag" content="Python, 爬虫, Web开发">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png"><script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "我的技术博客",
-  "alternateName": [
-    "Python全栈学习之路",
-    "yangpengcheng801-hub.github.io"
-  ],
-  "url": "https://yangpengcheng801-hub.github.io/"
-}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://yangpengcheng801-hub.github.io/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f8f3" />
+    <meta
+      name="description"
+      content="杨鹏程的大模型应用实习作品集：RAG、FastAPI、LangChain、向量检索、文档解析、Prompt Engineering 与数据工程实践。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="杨鹏程 | 大模型应用开发实习候选人" />
+    <meta
+      property="og:description"
+      content="武汉轻工大学人工智能专业本科在读，关注 RAG、文档智能、FastAPI 后端、向量检索和大模型应用工程化。"
+    />
+    <meta property="og:url" content="https://yangpengcheng801-hub.github.io/" />
+    <meta property="og:image" content="https://yangpengcheng801-hub.github.io/img/avatar.png" />
+    <title>杨鹏程 | 大模型应用开发实习候选人</title>
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/avatar.png" />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #18212f;
+        --muted: #647083;
+        --line: #dfe5dd;
+        --paper: #f7f8f3;
+        --white: #ffffff;
+        --blue: #2563eb;
+        --green: #087f5b;
+        --amber: #b7791f;
+        --rose: #b42318;
+        --shadow: 0 18px 60px rgba(24, 33, 47, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 10%, rgba(37, 99, 235, 0.08), transparent 30rem),
+          radial-gradient(circle at 86% 18%, rgba(8, 127, 91, 0.1), transparent 28rem),
+          var(--paper);
+        color: var(--ink);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Microsoft YaHei", sans-serif;
+        line-height: 1.65;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .shell {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-bottom: 1px solid rgba(223, 229, 221, 0.85);
+        background: rgba(247, 248, 243, 0.88);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+        gap: 20px;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        font-weight: 800;
+        letter-spacing: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border-radius: 10px;
+        background: var(--ink);
+        color: var(--white);
+        font-size: 15px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      .hero {
+        min-height: calc(100vh - 72px);
+        padding: 70px 0 44px;
+        display: grid;
+        align-items: center;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.07fr 0.93fr;
+        gap: 46px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        margin: 0 0 18px;
+        color: var(--green);
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      h1 {
+        margin: 0;
+        max-width: 820px;
+        font-size: clamp(42px, 7vw, 78px);
+        line-height: 1.04;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        max-width: 680px;
+        color: #394456;
+        font-size: clamp(17px, 2vw, 21px);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        border-radius: 8px;
+        font-weight: 800;
+        font-size: 14px;
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          background 0.18s ease;
+      }
+
+      .button.primary {
+        background: var(--ink);
+        color: var(--white);
+        box-shadow: 0 12px 28px rgba(24, 33, 47, 0.16);
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(24, 33, 47, 0.12);
+      }
+
+      .profile-panel {
+        position: relative;
+        display: grid;
+        gap: 18px;
+      }
+
+      .portrait-wrap {
+        position: relative;
+        overflow: hidden;
+        min-height: 430px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2)),
+          url("/img/avatar.png") center 34% / min(330px, 76%) no-repeat,
+          #eaf0e7;
+        box-shadow: var(--shadow);
+      }
+
+      .portrait-wrap::after {
+        content: "";
+        position: absolute;
+        inset: auto 0 0;
+        height: 45%;
+        background: linear-gradient(180deg, transparent, rgba(247, 248, 243, 0.95));
+      }
+
+      .profile-stats {
+        position: absolute;
+        left: 20px;
+        right: 20px;
+        bottom: 20px;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      .stat {
+        min-height: 86px;
+        padding: 14px;
+        border: 1px solid rgba(24, 33, 47, 0.1);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(14px);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .quick {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .quick-item,
+      .card,
+      .project,
+      .timeline-item {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.78);
+        box-shadow: 0 10px 30px rgba(24, 33, 47, 0.06);
+      }
+
+      .quick-item {
+        padding: 15px;
+      }
+
+      .quick-item span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .quick-item strong {
+        display: block;
+        margin-top: 4px;
+      }
+
+      section {
+        padding: 72px 0;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 28px;
+        margin-bottom: 26px;
+      }
+
+      .section-head h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+
+      .section-head p {
+        margin: 0;
+        max-width: 520px;
+        color: var(--muted);
+      }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+
+      .card {
+        min-height: 190px;
+        padding: 22px;
+      }
+
+      .card h3,
+      .project h3,
+      .timeline-item h3 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0;
+      }
+
+      .card p,
+      .project p,
+      .timeline-item p {
+        color: var(--muted);
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .tag {
+        padding: 5px 9px;
+        border: 1px solid rgba(24, 33, 47, 0.13);
+        border-radius: 999px;
+        color: #344054;
+        background: rgba(255, 255, 255, 0.72);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .project-list {
+        display: grid;
+        gap: 16px;
+      }
+
+      .project {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        overflow: hidden;
+      }
+
+      .project-visual {
+        min-height: 270px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        background: #e8eee8;
+        border-right: 1px solid var(--line);
+      }
+
+      .project:nth-child(2) .project-visual {
+        background: #e9eef8;
+      }
+
+      .project:nth-child(3) .project-visual {
+        background: #f5eedf;
+      }
+
+      .project:nth-child(4) .project-visual {
+        background: #f6e8e6;
+      }
+
+      .project-kicker {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .project-code {
+        margin: 0;
+        color: rgba(24, 33, 47, 0.78);
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        white-space: pre-wrap;
+      }
+
+      .project-body {
+        padding: 26px;
+      }
+
+      .project-body ul {
+        margin: 18px 0 0;
+        padding-left: 20px;
+        color: #384356;
+      }
+
+      .project-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 12px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--white);
+        color: var(--ink);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .timeline-item {
+        padding: 22px;
+      }
+
+      .time {
+        display: inline-flex;
+        margin-bottom: 12px;
+        color: var(--green);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .contact {
+        padding-bottom: 92px;
+      }
+
+      .contact-panel {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        align-items: center;
+        padding: 34px;
+        border: 1px solid var(--ink);
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .contact-panel h2 {
+        margin: 0;
+        font-size: clamp(28px, 4vw, 46px);
+        line-height: 1.1;
+      }
+
+      .contact-panel p {
+        margin: 16px 0 0;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .contact-actions {
+        display: grid;
+        gap: 10px;
+      }
+
+      .contact-actions a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 48px;
+        padding: 0 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        font-weight: 800;
+      }
+
+      footer {
+        padding: 26px 0 36px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-inner {
+          min-height: 64px;
         }
-        return value
-      }
-    }
 
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        .nav-links {
+          display: none;
         }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+
+        .hero {
+          min-height: auto;
+          padding: 48px 0 28px;
         }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0f172a')
+
+        .hero-grid,
+        .project,
+        .contact-panel {
+          grid-template-columns: 1fr;
         }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+
+        .portrait-wrap {
+          min-height: 390px;
+        }
+
+        .skill-grid,
+        .timeline {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .project-visual {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .section-head {
+          display: block;
+        }
+
+        .section-head p {
+          margin-top: 10px;
         }
       }
 
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
-          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
-
-          if (theme === undefined) {
-            if (mediaQueryLight.matches) activateLightMode()
-            else if (mediaQueryDark.matches) activateDarkMode()
-            else {
-              const hour = new Date().getHours()
-              const isNight = hour <= 6 || hour >= 18
-              isNight ? activateDarkMode() : activateLightMode()
-            }
-            mediaQueryDark.addEventListener('change', () => {
-              if (saveToLocal.get('theme') === undefined) {
-                e.matches ? activateDarkMode() : activateLightMode()
-              }
-            })
-          } else {
-            theme === 'light' ? activateLightMode() : activateDarkMode()
-          }
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":true,"highlightMacStyle":true},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: true,
-  },
-  autoDarkmode: true
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '我的技术博客',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: 'home'
-}</script><link rel="stylesheet" href="/css/custom.css"><meta name="generator" content="Hexo 8.1.1"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  const preloader = {
-    endLoading: () => {
-      if ($loadingBox.classList.contains('loaded')) return
-      $body.style.overflow = ''
-      $loadingBox.classList.add('loaded')
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
-    }
-  }
-
-  preloader.initLoading()
-
-  if (document.readyState === 'complete') {
-    preloader.endLoading()
-  } else {
-    window.addEventListener('load', preloader.endLoading)
-    document.addEventListener('DOMContentLoaded', preloader.endLoading)
-    // Add timeout protection: force end after 7 seconds
-    setTimeout(preloader.endLoading, 7000)
-  }
-
-  if (false) {
-    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
-    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
-  }
-})()</script><div class="page" id="body-wrap"><header class="full_page fixed" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">我的技术博客</span></a></span><div id="menus"></div></nav><div id="site-info"><h1 id="site-title">我的技术博客</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/" title="无标题">无标题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-13T14:38:42.563Z" title="发表于 2026-03-13 22:38:42">2026-03-13</time></span></div><div class="content">Markdown博客排版格式教程（可直接复制发布）  title: Markdown博客排版格式教程（可直接复制发布）date: 2026-03-14 16:00:00tags:  - Markdown语法  - 博客排版  - 新手教程categories: 博客技巧本文整理了适配博客发布的Markdown基础语法+排版技巧，所有操作均为英文输入法，语法简单可直接复制，兼顾美观度和阅读体验，新手也能快速上手。 一、博客核心排版原则（必看）  层级清晰：标题从一级到三级即可（四级及以下太小，影响阅读）； 留白适度：段落之间空一行，代码、图片前后空一行，避免拥挤； 重点突出：关键内容用加粗，代码用代码块，避免大段纯文本； 资源适配：图片、视频用绝对路径（如&#x2F;img&#x2F;xxx.jpg），避免博客发布后404。  二、博客常用Markdown语法（直接复制可用）  标题排版（博客核心层级）  博客标题建议只用到三级，层级对应关系如下（直接复制修改内容即可）： 文章主标题（1个即可，放在文章最顶部）一级小节标题（文章大分类，如“一、核心语法”）二级小节标题（小节下细分，...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2026/03/13/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2026-03-12T16:08:22.841Z" title="发表于 2026-03-13 00:08:22">2026-03-13</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;  More info: Writing Run server1$ hexo server  More info: Server Generate static files1$ hexo generate  More info: Generating Deploy to remote sites1$ hexo deploy  More info: Deployment </div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">汪洋大海</div><div class="author-info-description">Tech Blog / 技术分享</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">✨ 把握现在 · 创造未来✨</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/13/Markdown%E8%AF%AD%E6%B3%95%E5%8F%8A%E6%A1%88%E4%BE%8B/" title="无标题">无标题</a><time datetime="2026-03-13T14:38:42.563Z" title="发表于 2026-03-13 22:38:42">2026-03-13</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/03/13/hello-world/" title="Hello World">Hello World</a><time datetime="2026-03-12T16:08:22.841Z" title="发表于 2026-03-13 00:08:22">2026-03-13</time></div></div></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
-      
-    </div>
-  
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2026/03/">
-            <span class="card-archive-list-date">
-              三月 2026
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">2</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-03-14T07:04:39.908Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By 汪洋大海</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: str => {
-    window.typed = new Typed('#subtitle', Object.assign({
-      strings: str,
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50,
-    }, {"strings":["探索技术的边界","记录成长的点滴","科技改变生活"],"typeSpeed":80,"backSpeed":50,"loop":true,"source":false,"sub":["探索技术的边界","记录成长的点滴","科技改变生活"]}))
-  },
-  run: subtitleType => {
-    if (true) {
-      if (typeof Typed === 'function') {
-        subtitleType()
-      } else {
-        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js@3.0.0/dist/typed.umd.min.js').then(subtitleType)
-      }
-    } else {
-      subtitleType()
-    }
-  },
-  processSubtitle: (content, extraContents = []) => {
-    if (true) {
-      const sub = [].slice()
-
-      if (extraContents.length > 0) {
-        sub.unshift(...extraContents)
-      }
-
-      if (typeof content === 'string') {
-        sub.unshift(content)
-      } else if (Array.isArray(content)) {
-        sub.unshift(...content)
-      }
-
-      sub.length > 0 && typedJSFn.init(sub)
-    } else {
-      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
-        (Array.isArray(content) && content.length > 0 ? content[0] : '')
-    }
-  }
-}
-btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
-</script></div><script>
-  // 音频列表（可自行添加/修改）
-  const audioList = [
-    { id: 'audio1', name: '捂不化的冬雪', src: '/audio/music1.mp3' },
-    { id: 'audio2', name: '海誓山盟', src: '/audio/music2.mp3' },
-    { id: 'audio3', name: '是我不够好', src: '/audio/music3.mp3' }
-  ];
-  
-  // 初始化视频（静音自动播放）
-  document.addEventListener('DOMContentLoaded', function() {
-    const header = document.getElementById('page-header');
-    if (header && window.location.pathname === '/' && !header.querySelector('#bg-video')) {
-      // 1. 创建视频元素（静音）
-      const video = document.createElement('video');
-      video.id = 'bg-video';
-      video.autoplay = true;
-      video.loop = true;
-      video.muted = true; // 强制静音
-      video.playsInline = true;
-      video.preload = 'auto';
-      video.innerHTML = '<source src="/img/bg-home.mp4" type="video/mp4">';
-      header.prepend(video);
-
-      // 视频加载失败兜底
-      video.addEventListener('error', function() {
-        console.error('视频加载失败！检查路径：/img/bg-home.mp4');
-        header.style.background = 'linear-gradient(135deg, #2a3852, #3b82f6)';
-      });
-
-      // 2. 创建音频播放器容器
-      const audioContainer = document.createElement('div');
-      audioContainer.className = 'audio-player';
-      audioContainer.innerHTML = `
-        <div id="audio-status">未播放</div>
-        <button class="control-btn" id="play-pause-btn">
-          <i class="fa fa-play" style="font-size:16px;"></i>
-        </button>
-      `;
-      header.appendChild(audioContainer);
-
-      // 3. 添加音频选择按钮
-      audioList.forEach(audio => {
-        const btn = document.createElement('button');
-        btn.id = audio.id + '-btn';
-        btn.textContent = audio.name;
-        btn.addEventListener('click', () => selectAudio(audio));
-        audioContainer.appendChild(btn);
-      });
-
-      // 4. 初始化音频对象
-      let currentAudio = null;
-      let isPlaying = false;
-
-      // 选择音频函数
-      function selectAudio(audio) {
-        // 停止当前播放的音频
-        if (currentAudio) {
-          currentAudio.pause();
-          currentAudio = null;
-          isPlaying = false;
-          updatePlayBtn();
-          updateStatus('未播放');
+      @media (max-width: 620px) {
+        .shell {
+          width: min(100% - 24px, 1120px);
         }
-        // 取消所有按钮激活状态
-        audioList.forEach(item => {
-          document.getElementById(item.id + '-btn').classList.remove('active');
-        });
-        // 激活当前按钮
-        document.getElementById(audio.id + '-btn').classList.add('active');
-        // 创建新音频对象
-        currentAudio = new Audio(audio.src);
-        currentAudio.loop = true; // 循环播放
-        currentAudio.volume = 0.3; // 音量30%
-        updateStatus(`已选择：${audio.name}`);
+
+        .hero {
+          padding-top: 34px;
+        }
+
+        .actions,
+        .quick,
+        .profile-stats,
+        .skill-grid,
+        .timeline {
+          grid-template-columns: 1fr;
+        }
+
+        .actions {
+          display: grid;
+        }
+
+        .button {
+          width: 100%;
+        }
+
+        .portrait-wrap {
+          min-height: 520px;
+          background-size: min(300px, 84%);
+          background-position: center 44px;
+        }
+
+        .profile-stats {
+          display: grid;
+        }
+
+        section {
+          padding: 54px 0;
+        }
+
+        .project-body,
+        .project-visual,
+        .contact-panel {
+          padding: 22px;
+        }
       }
+    </style>
+  </head>
+  <body>
+    <header class="nav">
+      <div class="shell nav-inner">
+        <a class="brand" href="#top" aria-label="返回顶部">
+          <span class="brand-mark">YP</span>
+          <span>杨鹏程</span>
+        </a>
+        <nav class="nav-links" aria-label="主导航">
+          <a href="#llm">大模型</a>
+          <a href="#projects">项目</a>
+          <a href="#skills">技能</a>
+          <a href="#experience">经历</a>
+          <a href="#contact">联系</a>
+        </nav>
+      </div>
+    </header>
 
-      // 播放/暂停切换
-      document.getElementById('play-pause-btn').addEventListener('click', function() {
-        if (!currentAudio) {
-          updateStatus('请先选择音频');
-          return;
-        }
-        if (isPlaying) {
-          currentAudio.pause();
-          isPlaying = false;
-          updatePlayBtn();
-          updateStatus(`已暂停：${audioList.find(a => a.id === currentAudio.id)?.name || '音频'}`);
-        } else {
-          currentAudio.play();
-          isPlaying = true;
-          updatePlayBtn();
-          updateStatus(`播放中：${audioList.find(a => a.id === currentAudio.id)?.name || '音频'}`);
-        }
-      });
+    <main id="top">
+      <section class="hero">
+        <div class="shell hero-grid">
+          <div>
+            <p class="eyebrow">LLM Application Intern / RAG / Python Backend</p>
+            <h1>你好，我是杨鹏程，目标是大模型应用开发实习。</h1>
+            <p class="lead">
+              武汉轻工大学人工智能专业本科在读，主线能力是把文档解析、向量检索、Prompt、后端接口和数据处理串成可运行的 AI 应用。
+              我正在重点准备 RAG、FastAPI、LangChain、ChromaDB、引用溯源和大模型问答链路，适配大模型应用、AI 工程、Python 后端相关实习。
+            </p>
+            <div class="actions">
+              <a class="button primary" href="#projects">查看 RAG 项目</a>
+              <a class="button" href="#llm">面试官速览</a>
+              <a class="button" href="https://github.com/yangpengcheng801-hub" target="_blank" rel="noreferrer">GitHub 主页</a>
+            </div>
+          </div>
 
-      // 更新播放按钮图标
-      function updatePlayBtn() {
-        const btn = document.getElementById('play-pause-btn');
-        btn.innerHTML = isPlaying 
-          ? '<i class="fa fa-pause" style="font-size:16px;"></i>' 
-          : '<i class="fa fa-play" style="font-size:16px;"></i>';
-      }
+          <aside class="profile-panel" aria-label="个人概览">
+            <div class="portrait-wrap">
+              <div class="profile-stats">
+                <div class="stat">
+                  <strong>RAG</strong>
+                  <span>主打项目方向</span>
+                </div>
+                <div class="stat">
+                  <strong>API</strong>
+                  <span>FastAPI 后端实践</span>
+                </div>
+                <div class="stat">
+                  <strong>3m+</strong>
+                  <span>可持续实习周期</span>
+                </div>
+              </div>
+            </div>
+            <div class="quick">
+              <div class="quick-item">
+                <span>当前城市</span>
+                <strong>武汉 / 襄阳</strong>
+              </div>
+              <div class="quick-item">
+                <span>求职方向</span>
+                <strong>大模型应用开发实习</strong>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-      // 更新状态文本
-      function updateStatus(text) {
-      // 简化文字，避免换行
-      const shortText = text
-        .replace('播放中：', '▶️ ')
-        .replace('已暂停：', '⏸️ ')
-        .replace('已选择：', '🎵 ')
-        .replace('请先选择音频', '⚠️ 请选音频');
-      document.getElementById('audio-status').textContent = shortText;
-    }
+      <section id="llm">
+        <div class="shell">
+          <div class="section-head">
+            <h2>大模型实习匹配点</h2>
+            <p>我把能力重点放在应用层和工程层：能理解模型能力边界，也能把检索、接口、数据和用户体验落到一个可演示系统里。</p>
+          </div>
+          <div class="skill-grid">
+            <article class="card">
+              <h3>完整 RAG 链路</h3>
+              <p>能讲清文档上传、解析、切分、Embedding、向量库召回、重排、Prompt 组装、答案生成和引用返回。</p>
+              <div class="tags">
+                <span class="tag">Chunking</span>
+                <span class="tag">Embedding</span>
+                <span class="tag">Retrieval</span>
+                <span class="tag">Rerank</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Python 后端接口</h3>
+              <p>能用 FastAPI 组织上传、解析、问答、流式响应等接口，理解日志、异常处理和模块拆分的重要性。</p>
+              <div class="tags">
+                <span class="tag">FastAPI</span>
+                <span class="tag">REST API</span>
+                <span class="tag">SSE</span>
+                <span class="tag">Async</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>文档与数据处理</h3>
+              <p>具备 PDF/Word 文本处理、数据清洗、结构化存储经验，能为大模型应用准备更干净的上下文。</p>
+              <div class="tags">
+                <span class="tag">PDF/Word</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Metadata</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Prompt 与评估意识</h3>
+              <p>关注答案是否基于原文、是否可追溯、是否能稳定复现，能围绕召回质量和幻觉问题继续迭代。</p>
+              <div class="tags">
+                <span class="tag">Prompt</span>
+                <span class="tag">Grounding</span>
+                <span class="tag">Citation</span>
+                <span class="tag">Evaluation</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-      // 音频加载失败处理
-      document.addEventListener('error', function(e) {
-        if (e.target.tagName === 'AUDIO') {
-          updateStatus('音频加载失败！');
-          console.error('音频加载失败：', e.target.src);
-        }
-      }, true);
-    }
-  });
+      <section id="skills">
+        <div class="shell">
+          <div class="section-head">
+            <h2>技术栈重点</h2>
+            <p>技能展示按大模型应用实习的实际工作拆分：后端接口、RAG 组件、数据处理、工程工具。</p>
+          </div>
+          <div class="skill-grid">
+            <article class="card">
+              <h3>LLM 应用组件</h3>
+              <p>围绕 RAG 做项目表达，熟悉 Prompt Engineering、文档解析、向量检索、重排与引用溯源。</p>
+              <div class="tags">
+                <span class="tag">RAG</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">ChromaDB</span>
+                <span class="tag">Prompt</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Python 与后端</h3>
+              <p>使用 Python 完成数据处理和服务端逻辑，重点补强 FastAPI、接口设计、异步任务和工程结构。</p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">FastAPI</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Git</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>数据采集与清洗</h3>
+              <p>做过多平台数据采集与结构化处理，能为 AI 应用准备可检索、可分析、可落库的数据。</p>
+              <div class="tags">
+                <span class="tag">Scrapy</span>
+                <span class="tag">Playwright</span>
+                <span class="tag">AES/RSA</span>
+                <span class="tag">webpack</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>CV 与部署基础</h3>
+              <p>参与 ROS 机器人和 OpenCV 视觉实训，具备 Linux 环境搭建、调试和跨模块协作意识。</p>
+              <div class="tags">
+                <span class="tag">ROS</span>
+                <span class="tag">SLAM</span>
+                <span class="tag">OpenCV</span>
+                <span class="tag">Linux</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-  // 移动端适配
-  function adaptVideoBackground() {
-    const video = document.getElementById('bg-video');
-    const audioPlayer = document.querySelector('.audio-player');
-    const header = document.getElementById('page-header');
-    if (window.innerWidth < 768) {
-      if (video) video.style.display = 'none';
-      if (audioPlayer) audioPlayer.style.display = 'none';
-      header.style.background = 'linear-gradient(135deg, #2a3852, #3b82f6)';
-    } else {
-      if (video) video.style.display = 'block';
-      if (audioPlayer) audioPlayer.style.display = 'flex';
-    }
-  }
-  window.addEventListener('resize', adaptVideoBackground);
-  adaptVideoBackground();
-</script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css"><canvas class="fireworks" mobile="true"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script id="canvas_nest" defer="defer" color="0,196,255" opacity="0.6" zIndex="-1" count="80" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = false;
-POWERMODE.mobile = true;
-document.body.addEventListener('input', POWERMODE);
-</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+      <section id="projects">
+        <div class="shell">
+          <div class="section-head">
+            <h2>代表项目</h2>
+            <p>主推第一个项目：它最贴近大模型应用实习 JD，可以围绕架构设计、RAG 原理、工程实现和优化思路展开。</p>
+          </div>
+          <div class="project-list">
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">RAG / FastAPI / LangChain</span>
+                <pre class="project-code">upload PDF/Word
+  -> parse & chunk
+  -> embedding
+  -> ChromaDB
+  -> retrieve + rerank
+  -> answer with sources</pre>
+              </div>
+              <div class="project-body">
+                <h3>Paper Orbit 论文智能阅读助手</h3>
+                <p>
+                  面向论文阅读效率低、信息定位慢、模型直接读长文成本高的问题，设计文档解析、向量检索、重排、引用溯源和流式问答链路。
+                </p>
+                <ul>
+                  <li>用 FastAPI 承接文档上传、解析、检索问答等接口，按模块拆分文档处理、检索和生成逻辑。</li>
+                  <li>采用 RAG 思路替代整篇论文直接输入，先召回相关片段再生成答案，降低无关上下文干扰。</li>
+                  <li>在问答结果中保留引用来源，方便用户回到原文核验，减少大模型幻觉带来的信任问题。</li>
+                  <li>可继续优化方向：chunk 策略、混合检索、rerank、缓存、问答评估集和多文档对比阅读。</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">FastAPI</span>
+                  <span class="tag">LangChain</span>
+                  <span class="tag">ChromaDB</span>
+                  <span class="tag">Citation</span>
+                </div>
+                <div class="project-links">
+                  <a class="project-link" href="/projects/paper-orbit/">查看源码</a>
+                  <a class="project-link" href="https://github.com/yangpengcheng801-hub/yangpengcheng801-hub.github.io/tree/gh-pages/projects/paper-orbit" target="_blank" rel="noreferrer">GitHub 目录</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">Interview Ready / LLM Engineering</span>
+                <pre class="project-code">why RAG?
+  -> lower context noise
+  -> controllable sources
+  -> cheaper long docs
+  -> easier evaluation
+  -> iterative retrieval</pre>
+              </div>
+              <div class="project-body">
+                <h3>大模型实习准备与项目表达</h3>
+                <p>
+                  围绕大模型应用岗位整理项目讲解、JD 高频词和面试追问，把“会调用模型”升级为“能解释系统链路和优化取舍”。
+                </p>
+                <ul>
+                  <li>准备 30 秒、1 分钟、3 分钟三种项目讲解版本，适配 HR、技术一面和深入追问。</li>
+                  <li>重点复盘为什么使用 RAG、为什么需要向量检索和 rerank、如何降低幻觉、如何做引用溯源。</li>
+                  <li>补强 FastAPI、Embedding、向量库、Prompt、chunk size/overlap 等大模型应用基础知识。</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">LLM JD</span>
+                  <span class="tag">RAG Q&A</span>
+                  <span class="tag">System Design</span>
+                  <span class="tag">Interview</span>
+                </div>
+                <div class="project-links">
+                  <a class="project-link" href="/projects/">项目源码索引</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">Python / Spider / Reverse Engineering</span>
+                <pre class="project-code">target platforms
+  -> anti-bot analysis
+  -> signed params
+  -> async crawling
+  -> clean data
+  -> MySQL / CSV</pre>
+              </div>
+              <div class="project-body">
+                <h3>多平台数据采集与逆向爬虫项目</h3>
+                <p>
+                  针对电商、社交、房产、资讯等平台，设计反爬对抗策略，完成数据自动化采集与结构化处理，可迁移到大模型应用的数据准备阶段。
+                </p>
+                <ul>
+                  <li>基于 Scrapy、Requests、Playwright 实现多线程/异步采集。</li>
+                  <li>分析 AES、RSA、SM 国密、webpack、wasm 等动态签名和参数加密逻辑。</li>
+                  <li>完成数据清洗与 MySQL/CSV 存储，支撑后续分析、知识库构建和市场调研。</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">Scrapy</span>
+                  <span class="tag">Requests</span>
+                  <span class="tag">Playwright</span>
+                  <span class="tag">MySQL</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">Web App / PWA / Learning Tool</span>
+                <pre class="project-code">words
+  -> frequency list
+  -> dictionary
+  -> review mode
+  -> mobile first
+  -> offline assets</pre>
+              </div>
+              <div class="project-body">
+                <h3>CET-4 单词学习应用</h3>
+                <p>
+                  一个已经部署在当前 GitHub Pages 下的四级单词学习工具，适合展示前端打包、静态部署和移动端体验。
+                </p>
+                <ul>
+                  <li>包含词库、作文素材、高频词和文章数据等静态资源。</li>
+                  <li>配置 manifest 与 service worker，具备 PWA 基础形态。</li>
+                  <li>页面已修复浏览器标题乱码，方便面试官直接打开体验。</li>
+                </ul>
+                <div class="project-links">
+                  <a class="project-link" href="/cet4-app/">在线体验</a>
+                </div>
+                <div class="tags">
+                  <span class="tag">Vite</span>
+                  <span class="tag">PWA</span>
+                  <span class="tag">Mobile UI</span>
+                  <span class="tag">GitHub Pages</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">ROS / OpenCV / Robotics</span>
+                <pre class="project-code">camera
+  -> face detection
+  -> identity matching
+  -> motion planning
+  -> simulation
+  -> real device</pre>
+              </div>
+              <div class="project-body">
+                <h3>AI 视觉与机器人实训项目</h3>
+                <p>
+                  参与基于 ROS 的智能机器人项目实训，完成 Linux 环境搭建、建模、SLAM 建图、自主导航与视觉模块实践。
+                </p>
+                <ul>
+                  <li>使用 Python、OpenCV、MTCNN、FaceNet 实现人脸检测与身份比对思路。</li>
+                  <li>通过 MoveIt! 完成机械臂运动控制、仿真调试与真机部署流程。</li>
+                  <li>积累了 AI 视觉和自动化系统落地中的调试经验。</li>
+                </ul>
+                <div class="tags">
+                  <span class="tag">ROS</span>
+                  <span class="tag">OpenCV</span>
+                  <span class="tag">MoveIt!</span>
+                  <span class="tag">Linux</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-visual">
+                <span class="project-kicker">Agent / Workflow / Framework Thinking</span>
+                <pre class="project-code">roles + messages
+  -> task planning
+  -> tool workflow
+  -> state transition
+  -> reflection loop
+  -> final output</pre>
+              </div>
+              <div class="project-body">
+                <h3>Agent Framework Lab 智能体框架实践</h3>
+                <p>
+                  整理 AutoGen、AgentScope、CAMEL、LangGraph 等多智能体框架的教学版实验，理解角色、消息、状态和图式工作流。
+                </p>
+                <ul>
+                  <li>用无 API Key 教学版代码复现多智能体协作机制，便于解释框架底层思想。</li>
+                  <li>包含软件团队协作、角色扮演写作、图式对话流程等实验。</li>
+                  <li>可迁移到大模型应用中的工具调用、任务编排和复杂流程控制。</li>
+                </ul>
+                <div class="project-links">
+                  <a class="project-link" href="/projects/agent-framework-lab/">查看源码</a>
+                </div>
+                <div class="tags">
+                  <span class="tag">Agent</span>
+                  <span class="tag">LangGraph</span>
+                  <span class="tag">AutoGen</span>
+                  <span class="tag">Workflow</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="shell">
+          <div class="section-head">
+            <h2>学习与经历</h2>
+            <p>这里保留面试官最关心的背景信息：学校、专业、竞赛与实训。</p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="time">2023.09 - 2027.06</span>
+              <h3>武汉轻工大学</h3>
+              <p>数学与计算机学院，人工智能专业本科在读。高等数学、机器学习、数据处理等基础课程持续积累中。</p>
+            </article>
+            <article class="timeline-item">
+              <span class="time">2024 - 2025</span>
+              <h3>竞赛与科研实践</h3>
+              <p>获得数学建模、智能机器人创意竞赛等省级奖项；参与 3D 类教改论文相关研究与实践。</p>
+            </article>
+            <article class="timeline-item">
+              <span class="time">2025.12 - 2026.01</span>
+              <h3>机器人开发实训</h3>
+              <p>参与 ROS、SLAM、MoveIt!、OpenCV 等模块训练，理解从算法验证到部署调试的完整工程流程。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="shell">
+          <div class="contact-panel">
+            <div>
+              <h2>欢迎查看我的项目，也欢迎直接联系我。</h2>
+              <p>
+                我目前重点准备 AI 应用开发、Python 数据工程、技术支持相关实习岗位。
+                如果你正在评估我的简历，这个页面可以作为项目索引和面试前快速了解入口。
+              </p>
+            </div>
+            <div class="contact-actions">
+              <a href="mailto:1756325284@qq.com"><span>1756325284@qq.com</span><span>邮件</span></a>
+              <a href="https://github.com/yangpengcheng801-hub" target="_blank" rel="noreferrer"><span>GitHub Profile</span><span>打开</span></a>
+              <a href="https://yangpengcheng801-hub.github.io/cet4-app/"><span>CET-4 App Demo</span><span>体验</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">© 2026 杨鹏程. Built for GitHub Pages.</div>
+    </footer>
+  </body>
+</html>

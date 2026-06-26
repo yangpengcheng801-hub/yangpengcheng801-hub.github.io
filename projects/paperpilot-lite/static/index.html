@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PaperPilot · 论文阅读助手</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/advanced.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">Paper<span>Pilot</span></a>
+    <div id="systemStatus" class="status"><i></i> 正在检查运行模式…</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">PAPER READING AGENT</div>
+      <h1>把一篇论文，读成<br><em>能回答的问题。</em></h1>
+      <p>上传论文，快速得到结构化摘要、关键贡献、方法、实验结论与带原文证据的问答。</p>
+      <div class="hero-meta"><span>PDF / TXT / MD</span><span>离线可用</span><span>证据可追溯</span></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="input-panel">
+        <div class="panel-title"><span>01</span> 导入论文</div>
+        <label id="dropzone" class="dropzone">
+          <input id="fileInput" type="file" accept=".pdf,.txt,.md,.markdown">
+          <b>选择或拖入论文</b>
+          <small>最大 25 MB，扫描 PDF 请先 OCR</small>
+          <strong>浏览文件</strong>
+        </label>
+        <div class="divider"><span>或粘贴文本</span></div>
+        <textarea id="paperText" placeholder="在这里粘贴论文正文……"></textarea>
+        <div class="actions">
+          <button id="sampleBtn" class="secondary">加载示例</button>
+          <button id="analyzeBtn" class="primary">开始阅读 →</button>
+        </div>
+        <p id="fileName" class="file-name"></p>
+        <p id="error" class="error"></p>
+      </aside>
+
+      <section class="result-panel">
+        <div id="emptyState" class="empty-state">
+          <div class="orbit"><span>AI</span></div>
+          <h2>等待一篇论文</h2>
+          <p>分析结果会在这里展开。先用示例论文试试看。</p>
+        </div>
+
+        <div id="loading" class="loading hidden"><div></div><p>正在拆解论文结构与关键证据……</p></div>
+
+        <div id="results" class="hidden">
+          <div class="result-head">
+            <div><span class="tag">分析完成</span><h2 id="title"></h2></div>
+            <button id="exportBtn" class="secondary">导出笔记</button>
+          </div>
+          <div id="stats" class="stats"></div>
+          <article class="lead-card"><span>一句话速览</span><p id="oneLiner"></p></article>
+          <div class="content-grid">
+            <article><h3>结构化摘要</h3><ul id="summary"></ul></article>
+            <article><h3>关键词</h3><div id="keywords" class="keywords"></div></article>
+            <article><h3>研究贡献</h3><ul id="contributions"></ul></article>
+            <article><h3>方法与实验</h3><ul id="methods"></ul><div class="subline"></div><ul id="paperResults"></ul></article>
+          </div>
+          <div class="advanced-grid">
+            <article class="map-card"><div class="section-head"><span>CONCEPT MAP</span><h3>论文概念关系图</h3></div><svg id="conceptMap" viewBox="0 0 640 300" role="img" aria-label="论文概念关系图"></svg></article>
+            <article class="review-card"><div class="section-head"><span>CRITIC AGENT</span><h3>批判性阅读</h3></div><div class="review-columns"><section><b>优势</b><ul id="strengths"></ul></section><section><b>局限</b><ul id="limitations"></ul></section><section><b>追问</b><ul id="followups"></ul></section></div></article>
+          </div>
+          <article class="trace-card"><div class="section-head"><span>MULTI-AGENT TRACE</span><h3>智能体协作轨迹</h3></div><div id="agentTrace" class="trace"></div></article>
+          <article class="sections-card"><h3>论文结构</h3><div id="sections"></div></article>
+          <article class="qa-card">
+            <div><span class="tag dark">论文问答</span><h3>继续追问这篇论文</h3><p>答案只从已解析的论文段落中检索，并附证据编号。</p></div>
+            <div class="question-row"><input id="question" placeholder="例如：这篇论文解决了什么问题？"><button id="askBtn" class="primary">提问</button></div>
+            <div id="answer" class="answer hidden"></div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+  <footer>PaperPilot 1.0 · 课程实验项目 · 关键结论请回到原文核对</footer>
+  <script src="/app.js"></script>
+</body>
+</html>

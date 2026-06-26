@@ -1,0 +1,18 @@
+{
+  "name": "paper-orbit",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Paper Orbit 论文智能阅读",
+  "scripts": {
+    "check": "node scripts/check-env.mjs",
+    "setup": "node scripts/setup.mjs",
+    "test-papers": "node scripts/generate-test-papers.mjs",
+    "package": "node scripts/package.mjs",
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"node scripts/run-backend.mjs\" \"npm run dev --prefix frontend\"",
+    "dev:backend": "node scripts/run-backend.mjs",
+    "dev:frontend": "npm run dev --prefix frontend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

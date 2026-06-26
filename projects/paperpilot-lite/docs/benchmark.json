@@ -1,0 +1,71 @@
+{
+  "document_characters": 4824,
+  "question_cases": 12,
+  "evidence_hits": 12,
+  "evidence_hit_rate_percent": 100.0,
+  "analysis_runs": 200,
+  "median_analysis_ms": 4.976,
+  "p95_analysis_ms": 7.272,
+  "cases": [
+    {
+      "question": "What evidence hit rate did the complete pipeline achieve?",
+      "expected": "86.0%",
+      "hit": true
+    },
+    {
+      "question": "What was the keyword-only baseline hit rate?",
+      "expected": "68.7%",
+      "hit": true
+    },
+    {
+      "question": "How many question-answer cases were evaluated?",
+      "expected": "150",
+      "hit": true
+    },
+    {
+      "question": "How many research-style documents were used?",
+      "expected": "30",
+      "hit": true
+    },
+    {
+      "question": "What was the median processing time?",
+      "expected": "0.42 seconds",
+      "hit": true
+    },
+    {
+      "question": "What file types can the parser process?",
+      "expected": "PDF, TXT, or Markdown",
+      "hit": true
+    },
+    {
+      "question": "What are the main PDF-related errors?",
+      "expected": "scanned PDFs",
+      "hit": true
+    },
+    {
+      "question": "What does each answer link to?",
+      "expected": "source paragraphs",
+      "hit": true
+    },
+    {
+      "question": "What future retrieval method is proposed?",
+      "expected": "embedding retrieval",
+      "hit": true
+    },
+    {
+      "question": "Why is the prototype suitable for classroom demonstrations?",
+      "expected": "without a paid model API",
+      "hit": true
+    },
+    {
+      "question": "How many reading questions were paired with each document?",
+      "expected": "five reading questions",
+      "hit": true
+    },
+    {
+      "question": "What is the key design principle?",
+      "expected": "traceability",
+      "hit": true
+    }
+  ]
+}

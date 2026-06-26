@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, sans-serif; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body, #root { min-height: 100%; margin: 0; }
+body { background: #070b14; }
+button, textarea, input { font: inherit; }
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/[.08] bg-white/[.035] shadow-[inset_0_1px_0_rgba(255,255,255,.04),0_20px_60px_rgba(0,0,0,.18)] backdrop-blur-2xl;
+  }
+}
+
+/* 问答 / 原文阅读面板：更明显的滚动条 */
+.panel-scroll,
+.chat-scroll {
+  scrollbar-gutter: stable;
+  scrollbar-width: auto;
+  scrollbar-color: rgba(96, 165, 250, 0.55) rgba(15, 23, 42, 0.35);
+}
+.panel-scroll::-webkit-scrollbar,
+.chat-scroll::-webkit-scrollbar { width: 10px; }
+.panel-scroll::-webkit-scrollbar-track,
+.chat-scroll::-webkit-scrollbar-track {
+  margin: 4px 0;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.35);
+}
+.panel-scroll::-webkit-scrollbar-thumb,
+.chat-scroll::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(#3b82f6, #8b5cf6);
+  background-clip: padding-box;
+}
+
+* { scrollbar-width: thin; scrollbar-color: rgba(96,165,250,.3) transparent; }
+*::-webkit-scrollbar { width: 6px; height: 6px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb { border-radius: 999px; background: linear-gradient(#3b82f6, #8b5cf6); }
+
+/* Word 预览由 docx-preview 生成，限制其样式影响范围。 */
+.docx-host .docx-wrapper { padding: 22px !important; background: transparent !important; }
+.docx-host .docx { margin: 0 auto 18px !important; box-shadow: 0 24px 65px rgba(0,0,0,.35) !important; }
+.docx-host .docx-highlight {
+  background: rgba(250, 204, 21, 0.45) !important;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 2px rgba(34, 211, 238, 0.55);
+  animation: docx-highlight-pulse 1.4s ease-in-out 2;
+}
+@keyframes docx-highlight-pulse {
+  0%, 100% { box-shadow: inset 0 0 0 2px rgba(34, 211, 238, 0.35); }
+  50% { box-shadow: inset 0 0 0 2px rgba(34, 211, 238, 0.85); }
+}
+.docx-host .docx-formula {
+  display: inline-block;
+  margin: 0 2px;
+  padding: 0 4px;
+  border-radius: 4px;
+  background: rgba(139, 92, 246, 0.12);
+  font-family: "Cambria Math", "Times New Roman", serif;
+}
+.react-pdf__Page { background: white; position: relative; margin: 0 auto; }
+.react-pdf__Page__canvas { display: block; max-width: 100%; height: auto !important; }
+.react-pdf__Page__textContent { position: absolute; left: 0; top: 0; right: 0; pointer-events: none; }
+.react-pdf__Page__annotations { pointer-events: none; }
+.react-pdf__Page .pdf-highlight {
+  background: rgba(250, 204, 21, 0.5) !important;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(250, 204, 21, 0.45);
+}
+.react-pdf__Page .pdf-highlight-marker {
+  position: absolute;
+  pointer-events: none;
+  border: 2px solid rgba(34, 211, 238, 0.85);
+  border-radius: 6px;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.15), 0 0 24px rgba(34, 211, 238, 0.35);
+  animation: pdf-marker-pulse 1.6s ease-in-out 2;
+}
+@keyframes pdf-marker-pulse {
+  0%, 100% { opacity: 0.75; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.01); }
+}
+
+/* 亮色主题采用 CSS 覆盖，所有切换均保留过渡。 */
+html.light { color-scheme: light; }
+html.light body, html.light .bg-space-950 { background-color: #eef2f8 !important; }
+html.light .glass-panel { border-color: rgba(15,23,42,.1); background: rgba(255,255,255,.72); box-shadow: 0 18px 55px rgba(15,23,42,.08); }
+html.light .text-slate-100, html.light .text-slate-200, html.light .text-slate-300 { color: #172033 !important; }
+html.light .text-slate-400, html.light .text-slate-500 { color: #526078 !important; }
+html.light .border-white\/10, html.light .border-white\/8 { border-color: rgba(15,23,42,.1) !important; }
+
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.loading-shimmer { background: linear-gradient(90deg, transparent, rgba(96,165,250,.16), transparent); background-size: 200% 100%; animation: shimmer 2s linear infinite; }
+
